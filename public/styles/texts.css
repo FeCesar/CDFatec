@@ -1,0 +1,12 @@
+.text-center{
+    text-align: center;
+}
+.text-left{
+    text-align: left !important;
+}
+.text-bold{
+    font-weight: bold !important;
+}
+.text-title{
+    font-size: 40px !important;
+}
