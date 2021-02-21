@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="./public/styles/bordes.css" />
     <link rel="stylesheet" href="./public/styles/texts.css" />
     <link rel="stylesheet" href="./public/styles/displays.css" />
+    <link rel="stylesheet" href="./public/styles/homepage.css" />
+    <link rel="stylesheet" href="./public/styles/ciencia-dados.css" />
 
     <!-- Bulma -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
@@ -45,6 +47,7 @@
             <!-- MENU DESKTOP -->
             <div id="navMenu" class="navbar-menu">
                 <div class="navbar-start margin-left-short">
+                    <a href="#sobre" class="navbar-item">Sobre</a>
                     <a href="#curso" class="navbar-item">Curso de Férias</a>
                     <a href="#faq" class="navbar-item">Perguntas Frequentes</a>
                     <a href="#blog" class="navbar-item">Blog</a>
@@ -127,11 +130,12 @@
     </div>
 
     <!-- HOMEPAGE -->
-    <section class="hero banner is-fullheight">
+    <section class="hero banner is-fullheight" id="homepage">
         <div class="hero-body">
             <div class="padding-left">
             <p class="title color-white">
-                Ciência de Dados
+                Ciência de Dados<br>
+                Fatec Ourinhos
             </p>
             <p class="subtitle color-white">
                 Venha estudar com a gente!
@@ -140,5 +144,109 @@
             </div>
         </div>
     </section>
+
+    <!-- SECTION -->
+    <section class="section is-medium" id="sobre">
+        <h1 class="title text-center padding-title">O QUE É CIÊNCIA DE DADOS?</h1>
+        <h2 class="subtitle text-center padding-subtitle">
+            Ciência de Dados é uma área interdisciplinar que engloba matemática, estatística, programação, 
+            conhecimento de negócio e comunicação. Um  profissional Cientista de Dados busca obter insights através de análises/ 
+            estudos de dados para auxiliar a empresa na hora de uma tomada de decisão.
+        </h2>
+    </section>
+
+    <!-- Social Medias -->
+    <section class="hero is-primary banner">
+        <div class="hero-body">
+            <nav class="level">
+                <div class="level-item has-text-centered">
+                    <div>
+                    <p class="heading">Instagram</p>
+                    <p class="title"><i class="fab fa-instagram"></i></p>
+                    </div>
+                </div>
+                <div class="level-item has-text-centered">
+                    <div>
+                    <p class="heading">Seguindo</p>
+                    <p class="title">123</p>
+                    </div>
+                </div>
+                <div class="level-item has-text-centered">
+                    <div>
+                    <p class="heading">Seguidores</p>
+                    <p class="title">456K</p>
+                    </div>
+                </div>
+                <div class="level-item has-text-centered">
+                    <div>
+                    <p class="heading">Total de Likes</p>
+                    <p class="title">789</p>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <!-- SECTION CURSO DE FÉRIAS -->
+<section class="section is-medium" id="curso">
+    <h1 class="title text-center padding-title">MINI CURSO DE FÉRIAS</h1>
+    <h2 class="subtitle text-center padding-subtitle">
+        O Mincurso de férias - Python 3 veio para fundamentar a sua base de conhecimento na linguagem de programação Python. 
+        Desenvolvido e aplicado por alunos da Fatec Ourinhos, este Minicurso será online e gratuito! 
+        Serão trabalhados: Tipos primitivos, Operadores lógicos e matemáticos, Condicionais, 
+        Laços de repetição e uma Introdução à Estrutura de Dados. 
+    </h2>
+    <div class="container">
+        <nav class="level margin-top">
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">Introdução Ao Python 3</p>
+                    <p class="title">12/01</p>
+                    <button class="button is-link margin-top bg-standard">Conteúdo</button>
+                </div>
+            </div>
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">ESTRUTURAS CONDICIONAIS SIMPLES</p>
+                    <p class="title">13/01</p>
+                    <button class="button is-link margin-top bg-standard">Conteúdo</button>
+                </div>
+            </div>
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">ELIF E FOR</p>
+                    <p class="title">18/01</p>
+                    <button class="button is-link margin-top bg-standard">Conteúdo</button>
+                </div>
+            </div>
+        </nav>
+
+        <nav class="level margin-top">
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">LAÇOS DE REPETIÇÃO - WHILE</p>
+                    <p class="title">19/01</p>
+                    <button class="button is-link margin-top bg-standard">Conteúdo</button>
+                </div>
+            </div>
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">ESTRUTURA DE DADOS</p>
+                    <p class="title">20/01</p>
+                    <button class="button is-link margin-top bg-standard">Conteúdo</button>
+                </div>
+            </div>
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">BIBLIOTECAS</p>
+                    <p class="title">21/01</p>
+                    <button class="button is-link margin-top bg-standard">Conteúdo</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+    </div>
+</section>
+
 </body>
 </html>

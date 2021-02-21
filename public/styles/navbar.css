@@ -1,9 +1,6 @@
 .navbar-item:hover{
     color: rgb(47,23,75) !important;
 }
-.banner{
-    background-image: url('../images/banner.png');
-}
 .btn-mobile{
     margin-top: 5%;
 }

@@ -1,0 +1,27 @@
+.padding-title{
+    padding-bottom: 10%;
+}
+.padding-subtitle{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+@media screen and (min-width: 768px){
+    .padding-title{
+        padding-bottom: 3%;
+    }
+    .padding-subtitle{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}
+
+@media screen and (min-width: 1024px){
+    .padding-title{
+        padding-bottom: 1%;
+    }
+    .padding-subtitle{
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+}
