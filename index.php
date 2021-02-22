@@ -60,8 +60,8 @@
                 <div class="navbar-end">
                     <div class="navbar-item">
                         <div>
-                            <a class="button bg-standard color-white border-none" onClick="openModal('modalRegistro')"><strong>Cadastar</strong></a>
-                            <a class="button bg-standard color-white border-none" onClick="openModal('modalLogar')">Entrar</a>
+                            <a class="button bg-purple color-white border-none" onClick="openModal('modalRegistro')"><strong>Cadastar</strong></a>
+                            <a class="button bg-purple color-white border-none" onClick="openModal('modalLogar')">Entrar</a>
                         </div>
                     </div>
                 </div>
@@ -357,8 +357,11 @@
                 </div>
             </div>  
         </div>
-        <h6 class="color-white text-center margin-top">Vestibular
-            <strong><a href="https://www.vestibularfatec.com" target="_blank">FATEC</a></strong>
+        <h6 class="color-white text-center margin-top">FATEC
+            <strong><a href="https://www.fatecourinhos.edu.br/" target="_blank">Ourinhos</a></strong>
+        </h6> 
+        <h6 class="color-white text-center">Vestibular
+            <strong><a href="https://www.vestibularfatec.com.br/" target="_blank">FATEC</a></strong>
         </h6> 
         <h6 class="color-white text-center">Desenvolvido por 
             <strong><a href="https://www.github.com/FeCesar" target="_blank">Felipe Cesar</a></strong>
