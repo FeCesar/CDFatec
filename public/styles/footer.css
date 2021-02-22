@@ -1,0 +1,9 @@
+.footer ul li{
+    list-style: none;
+    color: white;
+    font-weight: lighter;
+}
+
+.footer{
+    padding: 3rem 1.5rem 2rem !important;
+}

@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="./public/styles/homepage.css" />
     <link rel="stylesheet" href="./public/styles/curso.css" />
     <link rel="stylesheet" href="./public/styles/faq.css" />
+    <link rel="stylesheet" href="./public/styles/footer.css" />
 
     <!-- Bulma -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
@@ -318,7 +319,7 @@
                 </article>
 
                 <article class="message margin-left margin-right margin-bottom">
-                    <div class="message-header pointer " id="q44" onClick="openFaq('q4', 'q44')">
+                    <div class="message-header pointer margin-bottom" id="q44" onClick="openFaq('q4', 'q44')">
                         <p>Qualquer um pode escrever um post?</p>
                         <span><i class="fas fa-caret-down"></i></span>
                     </div>
@@ -331,6 +332,38 @@
             </main>
         </div>
     </article>
+
+    
+    <!-- RODAPÉ -->
+    <footer class="footer banner">
+        <div class="content container has-text-centered">
+            <div class="columns">
+                <div class="column is-half">
+                    <ul>
+                        <li><h3 class="color-white">Contato</h3></li>
+
+                        <i class="far fa-envelope color-white"></i>
+                        <li>diretoria@fatec.com</li>
+                        <li>fatec@fatec.com</li>
+
+                        <i class="fas fa-phone-alt color-white margin-top"></i>
+                        <li>(14) 3323-3721</li>
+                        <li>(14) 3343-2212</li>
+                    </ul>
+                </div>
+                <div class="column is-half">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3673.9854558809243!2d-49.898355285371196!3d-22.950762745210884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c01976077f0513%3A0x7469ad48478234ac!2sFatec%20Ourinhos!5e0!3m2!1spt-BR!2sbr!4v1614029425312!5m2!1spt-BR!2sbr" 
+                    width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>  
+        </div>
+        <h6 class="color-white text-center margin-top">Vestibular
+            <strong><a href="https://www.vestibularfatec.com" target="_blank">FATEC</a></strong>
+        </h6> 
+        <h6 class="color-white text-center">Desenvolvido por 
+            <strong><a href="https://www.github.com/FeCesar" target="_blank">Felipe Cesar</a></strong>
+        </h6>  
+    </footer>
 
 </body>
 </html>
