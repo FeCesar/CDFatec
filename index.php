@@ -18,8 +18,8 @@
     <link rel="stylesheet" href="./public/styles/texts.css" />
     <link rel="stylesheet" href="./public/styles/displays.css" />
     <link rel="stylesheet" href="./public/styles/homepage.css" />
-    <link rel="stylesheet" href="./public/styles/ciencia-dados.css" />
     <link rel="stylesheet" href="./public/styles/curso.css" />
+    <link rel="stylesheet" href="./public/styles/faq.css" />
 
     <!-- Bulma -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
@@ -29,6 +29,8 @@
     <script src="./public/javascript/btn-mobile.js"></script>
     <!-- SCRIPT MODAL BUTTON -->
     <script src="./public/javascript/btn-modal.js"></script>
+    <!-- SCRIPT FAQ BUTTON -->
+    <script src="./public/javascript/btn-faq.js"></script>
 
     <title>Ciência de Dados - FATEC</title>
 </head>
@@ -146,10 +148,10 @@
         </div>
     </section>
 
-    <!-- SECTION -->
+    <!-- O QUE É CIENCIA DE DADOS -->
     <section class="section is-medium bg-white" id="sobre">
-        <h1 class="title text-center padding-title">O QUE É CIÊNCIA DE DADOS?</h1>
-        <h2 class="subtitle text-center padding-subtitle">
+        <h1 class="title container">O QUE É CIÊNCIA DE DADOS?</h1>
+        <h2 class="subtitle container">
             Ciência de Dados é uma área interdisciplinar que engloba matemática, estatística, programação, 
             conhecimento de negócio e comunicação. Um  profissional Cientista de Dados busca obter insights através de análises/ 
             estudos de dados para auxiliar a empresa na hora de uma tomada de decisão.
@@ -157,7 +159,7 @@
     </section>
 
     <!-- Social Medias -->
-    <section class="hero header-curso">
+    <section class="hero banner">
         <div class="hero-body">
             <nav class="level">
                 <div class="level-item has-text-centered">
@@ -188,16 +190,18 @@
         </div>
     </section>
 
+    <!-- CURSO -->
     <section id="curso">
-
-        <header class="header-curso">
-            <h2 class="text-center color-white">Mini curso de Férias</h2>
-            <p class="text-center color-white">O Mincurso de férias - Python 3 veio para fundamentar a sua base de conhecimento na linguagem de programação Python. 
+        <section class="section is-medium">
+            <h1 class="title container">MINI CURSO DE FÉRIAS</h1>
+            <h2 class="subtitle container">
+                O Mincurso de férias - Python 3 veio para fundamentar a sua base de conhecimento na linguagem de programação Python. 
                 Desenvolvido e aplicado por alunos da Fatec Ourinhos, este Minicurso será online e gratuito! Serão trabalhados: 
-                Tipos primitivos, Operadores lógicos e matemáticos, Condicionais, Laços de repetição e uma Introdução à Estrutura de Dados.</p>
-        </header>
+                Tipos primitivos, Operadores lógicos e matemáticos, Condicionais, Laços de repetição e uma Introdução à Estrutura de Dados. 
+            </h2>
+        </section>
 
-        <div class="padding-standard">
+        <div class="container">
             <div class="columns">
                 <div class="column is-one-third caixa">
                     <header class="caixa-header">
@@ -262,8 +266,71 @@
                 </div>
             </div>
         </div>        
-        
     </section>
+
+
+    <!-- FAQ -->
+    <article id="faq">
+        <header class="banner is-short section">
+            <h1 class="color-white container">Perguntas Frequentes</h1>
+        </header>
+        
+        <div class="container">
+            <main class="container">
+
+                <header class="header-message">
+                    <h2 class="padding-standard">Mini Curso</h2>
+                </header>
+                <article class="message margin-left margin-right">
+                    <div class="message-header pointer bg-purple" id="q11" onClick="openFaq('q1', 'q11')">
+                        <p>Será emitido certificado?</p>
+                        <span><i class="fas fa-caret-down"></i></span>
+                    </div>
+                    <div class="display-none message-body" id="q1">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur laboriosam eius deleniti blanditiis dolore incidunt aliquid 
+                        temporibus, consectetur cumque explicabo! Nostrum quo, autem sint omnis facere hic. Molestiae, magnam quia?
+                    </div>
+                </article>
+
+                <article class="message margin-left margin-right margin-bottom">
+                    <div class="message-header pointer " id="q22" onClick="openFaq('q2', 'q22')">
+                        <p>As aulas ficam gravadas?</p>
+                        <span><i class="fas fa-caret-down"></i></span>
+                    </div>
+                    <div class="display-none message-body" id="q2">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam consectetur odio officiis totam, 
+                        amet facere expedita enim qui quod eius adipisci accusamus dolore, rem quo laborum quasi obcaecati error exercitationem.
+                    </div>
+                </article>
+
+                <header class="header-message">
+                    <h2 class="padding-standard">Blog</h2>
+                </header>
+                <article class="message margin-left margin-right">
+                    <div class="message-header pointer bg-purple" id="q33" onClick="openFaq('q3', 'q33')">
+                        <p>Preciso de uma conta para ler os posts?</p>
+                        <span><i class="fas fa-caret-down"></i></span>
+                    </div>
+                    <div class="display-none message-body" id="q3">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur laboriosam eius deleniti blanditiis dolore incidunt aliquid 
+                        temporibus, consectetur cumque explicabo! Nostrum quo, autem sint omnis facere hic. Molestiae, magnam quia?
+                    </div>
+                </article>
+
+                <article class="message margin-left margin-right margin-bottom">
+                    <div class="message-header pointer " id="q44" onClick="openFaq('q4', 'q44')">
+                        <p>Qualquer um pode escrever um post?</p>
+                        <span><i class="fas fa-caret-down"></i></span>
+                    </div>
+                    <div class="display-none message-body" id="q4">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam consectetur odio officiis totam, 
+                        amet facere expedita enim qui quod eius adipisci accusamus dolore, rem quo laborum quasi obcaecati error exercitationem.
+                    </div>
+                </article>
+
+            </main>
+        </div>
+    </article>
 
 </body>
 </html>

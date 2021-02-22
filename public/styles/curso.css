@@ -1,24 +1,3 @@
-#curso header h2{
-    font-size: 32px;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-    padding-top: 10%;
-}
-#curso header p{
-    padding-top: 3%;
-    padding-bottom: 10%;
-    padding-right: 10%;
-    padding-left: 10%;
-    font-size: 22px;
-    font-weight: lighter;
-}
-
-.header-curso{
-    background-color: rgba(47,23,75, 1);
-}
-
-
 .caixa{
     padding: 5% !important;    
     text-align: center;

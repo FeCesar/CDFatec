@@ -24,6 +24,9 @@
 .margin-bottom{
     margin-bottom: 5%;
 }
+.margin-bottom-short{
+    margin-bottom: 1% !important;
+}
 .margin-left{
     margin-left: 5%;
 }

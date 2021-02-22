@@ -1,0 +1,29 @@
+#faq header h1{
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+.header-message{
+    text-align: left;
+    font-size: 26px;
+    text-transform: uppercase;
+    font-weight: lighter;
+}
+
+.message{
+    margin-bottom: 10px !important;
+}
+
+.message-header p{
+    font-weight: lighter;
+}
+.message-header{
+    background-color: rgba(47,23,75, 1) !important;
+    transition: 0.4s;
+}
+.message-header:hover{
+    background-color: rgba(47,23,75, 0.8) !important;
+    transition: 0.3s;
+}
