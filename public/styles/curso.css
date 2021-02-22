@@ -1,0 +1,58 @@
+#curso header h2{
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    padding-top: 10%;
+}
+#curso header p{
+    padding-top: 3%;
+    padding-bottom: 10%;
+    padding-right: 10%;
+    padding-left: 10%;
+    font-size: 22px;
+    font-weight: lighter;
+}
+
+.header-curso{
+    background-color: rgba(47,23,75, 1);
+}
+
+
+.caixa{
+    padding: 5% !important;    
+    text-align: center;
+}
+.caixa.header{
+    width: 100%;
+}
+.caixa-header h3{
+    font-weight: bold;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+.caixa-content{
+    padding: 5% !important;
+}
+.caixa-content p{
+    font-size: 22px;
+    font-weight: lighter;
+}
+.caixa-content button{
+    width: 60%;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(47,23,75);
+    transition: 1s;
+    margin-top: 10%;
+}
+
+.caixa-content button:hover{
+    transition: 0.3s;
+    background-color: white;
+    color: rgb(47,23,75);
+    text-decoration: underline;
+}

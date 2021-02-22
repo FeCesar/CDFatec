@@ -1,3 +1,6 @@
 .border-none{
     border: none !important;
 }
+.border-radius{
+    border-radius: 10px;
+}

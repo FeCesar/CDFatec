@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="./public/styles/displays.css" />
     <link rel="stylesheet" href="./public/styles/homepage.css" />
     <link rel="stylesheet" href="./public/styles/ciencia-dados.css" />
+    <link rel="stylesheet" href="./public/styles/curso.css" />
 
     <!-- Bulma -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
@@ -34,7 +35,7 @@
 <body>
     <!-- NAVBAR -->
     <header class="container">
-        <nav class="navbar is-fixed-top padding-right padding-left" role="navigation" aria-label="main navegation">
+        <nav class="navbar is-fixed-top padding-right padding-left bg-white" role="navigation" aria-label="main navegation">
             <div class="navbar-brand">
                 <a href="#homepage" class="navbar-item"><img src="./public/images/logo.png" alt="logo" style="max-height: 4rem"></a>
                 <!-- MENU MOBILE -->
@@ -146,7 +147,7 @@
     </section>
 
     <!-- SECTION -->
-    <section class="section is-medium" id="sobre">
+    <section class="section is-medium bg-white" id="sobre">
         <h1 class="title text-center padding-title">O QUE É CIÊNCIA DE DADOS?</h1>
         <h2 class="subtitle text-center padding-subtitle">
             Ciência de Dados é uma área interdisciplinar que engloba matemática, estatística, programação, 
@@ -156,97 +157,113 @@
     </section>
 
     <!-- Social Medias -->
-    <section class="hero is-primary banner">
+    <section class="hero header-curso">
         <div class="hero-body">
             <nav class="level">
                 <div class="level-item has-text-centered">
                     <div>
-                    <p class="heading">Instagram</p>
-                    <p class="title"><i class="fab fa-instagram"></i></p>
+                    <p class="heading color-white">Instagram</p>
+                    <p class="title color-white"><i class="fab fa-instagram"></i></p>
                     </div>
                 </div>
                 <div class="level-item has-text-centered">
                     <div>
-                    <p class="heading">Seguindo</p>
-                    <p class="title">123</p>
+                    <p class="heading color-white">Seguindo</p>
+                    <p class="title color-white">123</p>
                     </div>
                 </div>
                 <div class="level-item has-text-centered">
                     <div>
-                    <p class="heading">Seguidores</p>
-                    <p class="title">456K</p>
+                    <p class="heading color-white">Seguidores</p>
+                    <p class="title color-white">456K</p>
                     </div>
                 </div>
                 <div class="level-item has-text-centered">
                     <div>
-                    <p class="heading">Total de Likes</p>
-                    <p class="title">789</p>
+                    <p class="heading color-white">Total de Likes</p>
+                    <p class="title color-white">789</p>
                     </div>
                 </div>
             </nav>
         </div>
     </section>
 
-    <!-- SECTION CURSO DE FÉRIAS -->
-<section class="section is-medium" id="curso">
-    <h1 class="title text-center padding-title">MINI CURSO DE FÉRIAS</h1>
-    <h2 class="subtitle text-center padding-subtitle">
-        O Mincurso de férias - Python 3 veio para fundamentar a sua base de conhecimento na linguagem de programação Python. 
-        Desenvolvido e aplicado por alunos da Fatec Ourinhos, este Minicurso será online e gratuito! 
-        Serão trabalhados: Tipos primitivos, Operadores lógicos e matemáticos, Condicionais, 
-        Laços de repetição e uma Introdução à Estrutura de Dados. 
-    </h2>
-    <div class="container">
-        <nav class="level margin-top">
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">Introdução Ao Python 3</p>
-                    <p class="title">12/01</p>
-                    <button class="button is-link margin-top bg-standard">Conteúdo</button>
-                </div>
-            </div>
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">ESTRUTURAS CONDICIONAIS SIMPLES</p>
-                    <p class="title">13/01</p>
-                    <button class="button is-link margin-top bg-standard">Conteúdo</button>
-                </div>
-            </div>
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">ELIF E FOR</p>
-                    <p class="title">18/01</p>
-                    <button class="button is-link margin-top bg-standard">Conteúdo</button>
-                </div>
-            </div>
-        </nav>
+    <section id="curso">
 
-        <nav class="level margin-top">
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">LAÇOS DE REPETIÇÃO - WHILE</p>
-                    <p class="title">19/01</p>
-                    <button class="button is-link margin-top bg-standard">Conteúdo</button>
+        <header class="header-curso">
+            <h2 class="text-center color-white">Mini curso de Férias</h2>
+            <p class="text-center color-white">O Mincurso de férias - Python 3 veio para fundamentar a sua base de conhecimento na linguagem de programação Python. 
+                Desenvolvido e aplicado por alunos da Fatec Ourinhos, este Minicurso será online e gratuito! Serão trabalhados: 
+                Tipos primitivos, Operadores lógicos e matemáticos, Condicionais, Laços de repetição e uma Introdução à Estrutura de Dados.</p>
+        </header>
+
+        <div class="padding-standard">
+            <div class="columns">
+                <div class="column is-one-third caixa">
+                    <header class="caixa-header">
+                        <h3>INTRODUÇÃO AO PYTHON 3<h3>
+                    </header>
+                    <main class="caixa-content">
+                        <p >21/01</p>
+                        <button class="border-radius border-none padding-standard margin-top">Ver</button>
+                    </main>
+                </div>
+                
+                <div class="column is-one-third caixa">
+                    <header class="caixa-header">
+                        <h3>INTRODUÇÃO AO PYTHON 3<h3>
+                    </header>
+                    <main class="caixa-content">
+                        <p >21/01</p>
+                        <button class="border-radius border-none padding-standard margin-top">Ver</button>
+                    </main>
+                </div>
+                
+                <div class="column is-one-third caixa">
+                    <header class="caixa-header">
+                        <h3>INTRODUÇÃO AO PYTHON 3<h3>
+                    </header>
+                    <main class="caixa-content">
+                        <p >21/01</p>
+                        <button class="border-radius border-none padding-standard margin-top">Ver</button>
+                    </main>
                 </div>
             </div>
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">ESTRUTURA DE DADOS</p>
-                    <p class="title">20/01</p>
-                    <button class="button is-link margin-top bg-standard">Conteúdo</button>
+            
+            <div class="columns">
+                <div class="column is-one-third caixa">
+                    <header class="caixa-header">
+                        <h3>INTRODUÇÃO AO PYTHON 3<h3>
+                    </header>
+                    <main class="caixa-content">
+                        <p >21/01</p>
+                        <button class="border-radius border-none padding-standard margin-top">Ver</button>
+                    </main>
+                </div>
+                
+                <div class="column is-one-third caixa">
+                    <header class="caixa-header">
+                        <h3>INTRODUÇÃO AO PYTHON 3<h3>
+                    </header>
+                    <main class="caixa-content">
+                        <p >21/01</p>
+                        <button class="border-radius border-none padding-standard margin-top">Ver</button>
+                    </main>
+                </div>
+                
+                <div class="column is-one-third caixa">
+                    <header class="caixa-header">
+                        <h3>INTRODUÇÃO AO PYTHON 3<h3>
+                    </header>
+                    <main class="caixa-content">
+                        <p >21/01</p>
+                        <button class="border-radius border-none padding-standard margin-top">Ver</button>
+                    </main>
                 </div>
             </div>
-            <div class="level-item has-text-centered">
-                <div>
-                    <p class="heading">BIBLIOTECAS</p>
-                    <p class="title">21/01</p>
-                    <button class="button is-link margin-top bg-standard">Conteúdo</button>
-                </div>
-            </div>
-        </nav>
-    </div>
-    </div>
-</section>
+        </div>        
+        
+    </section>
 
 </body>
 </html>
