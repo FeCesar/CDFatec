@@ -41,6 +41,8 @@
     <script src="./public/javascript/btn-modal.js"></script>
     <!-- SCRIPT FAQ BUTTON -->
     <script src="./public/javascript/btn-faq.js"></script>
+    <!-- SCRIPT NOTIFICACAO -->
+    <script src="./public/javascript/notificacao.js"></script>
 
     <title>Ciência de Dados - FATEC</title>
 </head>
@@ -89,6 +91,13 @@
                     </div>
                 <?php } ?>
 
+                <?php if(isset($_SESSION['sucess_conta_criada'])): ?>
+                    <div class="notification is-success is-light">
+                        <button class="delete"></button>
+                        Conta Criada com Sucesso!
+                    </div>
+                <?php endif; unset($_SESSION['sucess_conta_criada']);?>
+
             </div>
         </nav>
     </header>
@@ -101,12 +110,12 @@
 
                     <!-- ERRO EMAIL INVÁLIDO -->
                     <?php if(isset($_SESSION['error_email_invalido'])): ?>
-                        <h3 class="has-text-danger">Insira um Email Válido!</h3>
+                        <h3 class="has-text-danger padding-standard">Insira um Email Válido!</h3>
                     <?php endif; unset($_SESSION['error_email_invalido']);?>
 
                     <!-- ERRO CONTA INEXISTENTE -->
                     <?php if(isset($_SESSION['conta_inexistente'])): ?>
-                        <h3 class="has-text-danger">Conta Inválida!</h3>
+                        <h3 class="has-text-danger padding-standard">Conta Inválida!</h3>
                     <?php endif; unset($_SESSION['conta_inexistente']); ?>
 
                 </header>
@@ -145,9 +154,21 @@
         <div class="modal-card">
                 <header class="modal-card-head">
                     <p class="modal-card-title">Cadastrar-se</p>
+
+                    <!-- ERRO EMAIL INVÁLIDO -->
+                    <?php if(isset($_SESSION['error_email_invalido_registro'])): ?>
+                        <h3 class="has-text-danger padding-standard">Insira um Email Válido!</h3>
+                    <?php endif; unset($_SESSION['error_email_invalido_registro']);?>
+
+                    <!-- ERRO EMAIL INEXISTENTE -->
+                    <?php if(isset($_SESSION['error_email_utilizado'])): ?>
+                        <h3 class="has-text-danger padding-standard">Email já Utilizado!</h3>
+                    <?php endif; unset($_SESSION['error_email_utilizado']); ?>
+
                 </header>
+
                 <section class="modal-card-body">
-                    <form method="post" action="#">
+                    <form method="post" action="controller/verifyCadastro.php">
                         
                         <div class="padding-standart">
                             <label class="label" for="nome">Nome</label>
@@ -159,8 +180,9 @@
                         </div>
                         <div class="padding-standart">
                             <label class="label" for="senha">Senha</label>
-                            <input type="text" class="input" name="senha" placeholder="Ex.: !2E21@HT" />
+                            <input type="text" class="input" name="pass" placeholder="Ex.: !2E21@HT" />
                         </div>
+                        <input type="hidden" name="url" value="<?php echo $urlAtual; ?>">
                         <div class="padding-standart">
                             <input type="submit" class="input button bg-purple color-white margin-top" value="Cadastrar">
                         </div>
@@ -181,7 +203,7 @@
                 <p class="subtitle color-white">
                     Venha estudar com a gente!
                 </p>
-                <button class="button is-medium is-fullwidth btn-banner">Vestibular</button>
+                <a href="https://www.vestibularfatec.com.br/" target="_blank"><button class="button is-medium is-fullwidth btn-banner">Vestibular</button></a>
             </div>
         </div>
     </section>

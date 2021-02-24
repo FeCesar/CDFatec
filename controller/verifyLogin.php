@@ -15,6 +15,8 @@
         $url = explode("/", $url);
         $url = $url[2];
 
+
+
         function verificaEmail($emailUser){
 
             $emailsTypes = ["outlook.com", "hotmail.com", "gmail.com", "fatec.sp.gov.br", "admin.com", "user.com"];
@@ -30,13 +32,14 @@
                 }
             }
 
-            return in_array("Válido", $emailCorreto); // RETURN = FALSE / TRUE
+            return in_array("Válido", $emailCorreto);
         }
 
         if(!verificaEmail($email)){
             $_SESSION['error_email_invalido'] = true;
             header("Location: ../" . $url);
         }
+
 
 
         $sql = "SELECT * FROM administrador WHERE admin_email = '$email' and admin_pass = '$pass'";
