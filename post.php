@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="./public/styles/footer.css" />
     <link rel="stylesheet" href="./public/styles/blog.css" />
     <link rel="stylesheet" href="./public/styles/buttons.css" />
+    <link rel="stylesheet" href="./public/styles/post.css" />
 
     <!-- Bulma -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
@@ -156,54 +157,141 @@
         <div class="hero-body">
             <div class="padding-left title-banner">
                 <p class="title color-white">
-                    Blog<br>
-                    Ciência de Dados
-                </p> 
-                <button class="button is-medium is-fullwidth btn-banner"><i class="fas fa-pencil-alt" style="margin-right: 10px;"></i>Escrever Post</button>
+                    Title
+                </p>
+                <p class="subtitle color-white">
+                    Subtitle
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- BLOG -->
-    <main class="container" style="margin-bottom: 12%;">
 
-        <h2 class="upper bold size-22 margin-top-short">Posts</h2>
+    <!-- POST -->
+    <main class="container">
+        <div class="text">
+            <div>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
+                    pariatur ex repellendus quia ullam consectetur facilis, 
+                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
+                    pariatur ex repellendus quia ullam consectetur facilis, 
+                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
+                    pariatur ex repellendus quia ullam consectetur facilis, 
+                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
+                </p>
 
-        <div class="columns is-3">
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
+                    pariatur ex repellendus quia ullam consectetur facilis, 
+                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
+                    pariatur ex repellendus quia ullam consectetur facilis, 
+                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
+                    pariatur ex repellendus quia ullam consectetur facilis, 
+                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
+                    pariatur ex repellendus quia ullam consectetur facilis, 
+                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
+                </p>
 
-            <div class="column is-half post">
-                <div class="post-header">
-                    <h1>Title</h1>
-                    <h2>Subtitle</h2>
-                </div>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
+                    pariatur ex repellendus quia ullam consectetur facilis, 
+                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
+                    pariatur ex repellendus quia ullam consectetur facilis, 
+                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
+                    pariatur ex repellendus quia ullam consectetur facilis, 
+                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
+                </p>
 
-                <div class="more">
-                    <a href="post.php">Ver Mais <i class="fas fa-angle-right"></i></a>
-                </div>
-
-                <div class="post-footer">
-                    <p>21/01/2021</p>
-                </div>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
+                    pariatur ex repellendus quia ullam consectetur facilis, 
+                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
+                    pariatur ex repellendus quia ullam consectetur facilis, 
+                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
+                    pariatur ex repellendus quia ullam consectetur facilis, 
+                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
+                    pariatur ex repellendus quia ullam consectetur facilis, 
+                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
+                    pariatur ex repellendus quia ullam consectetur facilis, 
+                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
+                </p>
             </div>
 
-            <div class="column post">
-                <div class="post-header">
-                    <h1>Title</h1>
-                    <h2>Subtitle</h2>
-                </div>
+            <div class="autor">
+                <div class="columns">
+                    <div class="column is-half">
+                        <figure><img src="https://ef564920920608e03abb-7d34ef097b6ab6c586dfc84157128505.ssl.cf1.rackcdn.com/PostImagem/36734/foto-de-perfil-profissional_o1eh30s23krp31qn41l3havc2fti.JPG" alt=""></figure>
+                    </div>
+                    <div class="column">
+                        <h3>Júlio Marques</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus quasi voluptatem voluptas non alias fugiat nostrum 
+                            vel laboriosam pariatur maiores, tempora ipsum aut! 
+                            Itaque aliquid molestias nisi voluptatum asperiores a.
+                        </p>
+                        <p>21/01/2021</p>
 
-                <div class="more">
-                    <a href="post.php">Ver Mais <i class="fas fa-angle-right"></i></a>
-                </div>
+                        <div class="social">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#  "><i class="fab fa-instagram"></i></a>
+                        </div>
 
-                <div class="post-footer">
-                    <p>22/01/2021</p>
+                    </div>
                 </div>
             </div>
         </div>
-
     </main>
 
+
+    <section class="container make-comments">
+
+    <h3 class="upper bold size-22">Comentários</h3>
+
+        <article class="media">
+            <div class="media-content">
+                <div class="field">
+                    <p class="control">
+                        <textarea class="textarea" placeholder="Adicionar Comentário..."></textarea>
+                    </p>
+                </div>
+                <nav class="level-right">
+                    <div class="level-right">
+                        <div class="level-item">
+                            <a class="button is-info">Comentar</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </article>
+    </section>
+
+
+    <section class="container comments">
+
+        <article class="media">
+            <div class="media-content">
+                <div class="content">
+                    <p>
+                        <strong>John Smith</strong> <small>21/01/2021</small>
+                        <br>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+                    </p>
+                </div>
+        </article>
+
+    </section>
 
     <!-- RODAPÉ -->
     <footer class="footer banner">

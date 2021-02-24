@@ -1,0 +1,40 @@
+.text{
+    padding: 5%;
+    line-height: 36px;
+    font-size: 18px;
+    text-align: justify;
+}
+.text p{
+    margin-top: 2%;
+}
+.autor{
+    margin-top: 8%;
+}
+.autor figure img{
+    border-radius: 10%;
+}
+
+.autor h3{
+    text-align: center;
+    font-size: 28px;
+    font-weight: lighter;
+}
+.autor .column p{
+    text-align: center;
+    font-size: 18px;
+}
+
+.social{
+    text-align: center;
+    margin-top: 3%;
+}
+
+.make-comments .media{
+    padding: 5%;
+    padding-bottom: 2%;
+}
+
+.comments{
+    padding: 5%;
+    padding-top: 2%;
+}
