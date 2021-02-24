@@ -10,6 +10,10 @@
 
         $email = $_POST['email'];
         $pass = $_POST['pass'];
+        
+        $url = $_POST['url'];
+        $url = explode("/", $url);
+        $url = $url[2];
 
         function verificaEmail($emailUser){
 
@@ -31,7 +35,7 @@
 
         if(!verificaEmail($email)){
             $_SESSION['error_email_invalido'] = true;
-            header("Location: ../index.php");
+            header("Location: ../" . $url);
         }
 
 
@@ -47,7 +51,7 @@
             
             $row = $stmtAdmin->fetch(PDO::FETCH_ASSOC);
             $_SESSION['dados'] = $row;
-            header("Location: ../index.php");
+            header("Location: ../" . $url);
 
         } 
 
@@ -55,13 +59,13 @@
 
             $row = $stmtUser->fetch(PDO::FETCH_ASSOC);
             $_SESSION['dados'] = $row;
-            header("Location: ../index.php");
+            header("Location: ../" . $url);
 
         }
         
         else{
             $_SESSION['conta_inexistente'] = true;
-            header("Location: ../index.php");
+            header("Location: ../" . $url);
         }
 
     } catch(Exception $e){

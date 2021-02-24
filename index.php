@@ -1,6 +1,7 @@
 <?php
 
     session_start();
+    $urlAtual = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 
 ?>
 
@@ -72,7 +73,7 @@
                         <div class="navbar-item">
                             <div> 
                                 <a href="#"><i class="far fa-user btn-user"></i></a>
-                                <a href="controller/logout.php"><i class="fas fa-sign-out-alt color-purple"></i></a>
+                                <a href="controller/logout.php?a=<?php echo $urlAtual; ?>"><i class="fas fa-sign-out-alt color-purple"></i></a>
                             </div>
                         </div>
                     </div>
@@ -127,6 +128,8 @@
                                     <i class="fas fa-lock"></i>
                                 </span>
                             </p>
+
+                            <input type="hidden" name="url" value="<?php echo $urlAtual; ?>">
                         </div>
                         <div class="padding-standart">
                             <input type="submit" class="input button bg-purple color-white" value="Entrar">

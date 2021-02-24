@@ -1,3 +1,10 @@
+<?php
+
+    session_start();
+    $urlAtual = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt_br">
 <head>
@@ -63,24 +70,27 @@
                 <!-- BUTTONS OF NAVBAR END -->
 
 
-                <!-- SEM LOGAR -->
-                <div class="navbar-end display-none">
-                    <div class="navbar-item">
-                        <div>
-                            <a class="button btn-login" onClick="openModal('modalRegistro')"><strong>Cadastar</strong></a>
-                            <a class="button btn-login" onClick="openModal('modalLogar')">Entrar</a>
+                <?php if(isset($_SESSION['dados'])){ ?>
+                    <!-- LOGADO  -->
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                            <div>
+                                <a href="#"><i class="far fa-user btn-user"></i></a>
+                                <a href="controller/logout.php?a=<?php echo $urlAtual; ?>"><i class="fas fa-sign-out-alt color-purple"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- LOGADO  -->
-                <div class="navbar-end">
-                    <div class="navbar-item">
-                        <div> 
-                            <a href="#"><i class="far fa-user btn-user"></i></a>
+                <?php } else{ ?>
+                    <!-- SEM LOGAR -->
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                            <div>
+                                <a class="button btn-login" onClick="openModal('modalRegistro')"><strong>Cadastar</strong></a>
+                                <a class="button btn-login" onClick="openModal('modalLogar')">Entrar</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php } ?>
 
             </div>
         </nav>
@@ -91,9 +101,20 @@
             <div class="card">
                 <header class="modal-card-head">
                     <p class="modal-card-title">Entrar</p>
+
+                    <!-- ERRO EMAIL INVÁLIDO -->
+                    <?php if(isset($_SESSION['error_email_invalido'])): ?>
+                        <h3 class="has-text-danger">Insira um Email Válido!</h3>
+                    <?php endif; unset($_SESSION['error_email_invalido']);?>
+
+                    <!-- ERRO CONTA INEXISTENTE -->
+                    <?php if(isset($_SESSION['conta_inexistente'])): ?>
+                        <h3 class="has-text-danger">Conta Inválida!</h3>
+                    <?php endif; unset($_SESSION['conta_inexistente']); ?>
+
                 </header>
                 <section class="modal-card padding-standard">
-                    <form method="post" action="#">
+                    <form method="post" action="controller/verifyLogin.php">
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
                                 <input class="input" type="email" name="email" placeholder="Email">
@@ -110,6 +131,8 @@
                                     <i class="fas fa-lock"></i>
                                 </span>
                             </p>
+
+                            <input type="hidden" name="url" value="<?php echo $urlAtual; ?>">
                         </div>
                         <div class="padding-standart">
                             <input type="submit" class="input button bg-purple color-white" value="Entrar">
