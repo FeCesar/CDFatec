@@ -1,0 +1,32 @@
+.btn-login{
+    background-color: rgba(47,23,75, 1) !important;
+    color: white !important;
+    border: none !important;
+    transition: 0.9s !important;
+}
+.btn-login:hover{
+    background-color: rgba(47,23,75, 0.1) !important;
+    color: rgba(47,23,75, 1) !important;
+    transition: 0.4s !important;
+}
+
+.btn-banner{
+    color: white !important;
+    background-color: rgba(255,255,255, 0.1) !important;
+    transition: 0.9s !important;
+}
+.btn-banner:hover{
+    transition: 0.4s !important;
+    color: rgba(47, 23, 75, 1) !important;
+    background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.btn-user{
+    font-size: 24px;
+    color: rgba(47, 23, 75, 1);
+    transition: 0.9s;
+}
+.btn-user:hover{
+    transition: 0.4s;
+    color:rgba(47, 23, 75, 0.4);
+}

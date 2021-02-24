@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="./public/styles/curso.css" />
     <link rel="stylesheet" href="./public/styles/faq.css" />
     <link rel="stylesheet" href="./public/styles/footer.css" />
+    <link rel="stylesheet" href="./public/styles/buttons.css" />
 
     <!-- Bulma -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
@@ -54,17 +55,30 @@
                     <a href="#sobre" class="navbar-item">Sobre</a>
                     <a href="#curso" class="navbar-item">Curso de Férias</a>
                     <a href="#faq" class="navbar-item">Perguntas Frequentes</a>
-                    <a href="#blog" class="navbar-item">Blog</a>
+                    <a href="blog.php" class="navbar-item">Blog</a>
                 </div>
                 <!-- BUTTONS OF NAVBAR END -->
-                <div class="navbar-end">
+
+
+                <!-- SEM LOGAR -->
+                <div class="navbar-end display-none">
                     <div class="navbar-item">
                         <div>
-                            <a class="button bg-purple color-white border-none" onClick="openModal('modalRegistro')"><strong>Cadastar</strong></a>
-                            <a class="button bg-purple color-white border-none" onClick="openModal('modalLogar')">Entrar</a>
+                            <a class="button btn-login" onClick="openModal('modalRegistro')"><strong>Cadastar</strong></a>
+                            <a class="button btn-login" onClick="openModal('modalLogar')">Entrar</a>
                         </div>
                     </div>
                 </div>
+
+                <!-- LOGADO  -->
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div> 
+                            <a href="#"><i class="far fa-user btn-user"></i></a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </nav>
     </header>
@@ -95,7 +109,7 @@
                             </p>
                         </div>
                         <div class="padding-standart">
-                            <input type="submit" class="input button bg-standard color-white" value="Entrar">
+                            <input type="submit" class="input button bg-purple color-white" value="Entrar">
                         </div>                        
                     </form>
                 </section>
@@ -125,7 +139,7 @@
                             <input type="text" class="input" name="senha" placeholder="Ex.: !2E21@HT" />
                         </div>
                         <div class="padding-standart">
-                            <input type="submit" class="input button bg-standard color-white margin-top" value="Cadastrar">
+                            <input type="submit" class="input button bg-purple color-white margin-top" value="Cadastrar">
                         </div>
                     </form>
                 </section>
@@ -137,14 +151,14 @@
     <section class="hero banner is-fullheight" id="homepage">
         <div class="hero-body">
             <div class="padding-left">
-            <p class="title color-white">
-                Ciência de Dados<br>
-                Fatec Ourinhos
-            </p>
-            <p class="subtitle color-white">
-                Venha estudar com a gente!
-            </p>
-            <button class="button is-medium is-fullwidth bg-transparent color-white">Vestibular</button>
+                <p class="title color-white">
+                    Ciência de Dados<br>
+                    Fatec Ourinhos
+                </p>
+                <p class="subtitle color-white">
+                    Venha estudar com a gente!
+                </p>
+                <button class="button is-medium is-fullwidth btn-banner">Vestibular</button>
             </div>
         </div>
     </section>
@@ -209,28 +223,31 @@
                         <h3>INTRODUÇÃO AO PYTHON 3<h3>
                     </header>
                     <main class="caixa-content">
-                        <p >21/01</p>
-                        <button class="border-radius border-none padding-standard margin-top">Ver</button>
+                        <p >12/01</p>
+                        <p>19H30</p>
+                        <button class="border-radius border-none padding-standard margin-top"><a href="https://drive.google.com/drive/folders/12eeGOIrUvekLRojctVf_bdr7qeopNIli" target="_blank">Acessar</a></button>
                     </main>
                 </div>
                 
                 <div class="column is-one-third caixa">
                     <header class="caixa-header">
-                        <h3>INTRODUÇÃO AO PYTHON 3<h3>
+                        <h3>ESTRUTURAS CONDICIONAIS SIMPLES<h3>
                     </header>
                     <main class="caixa-content">
-                        <p >21/01</p>
-                        <button class="border-radius border-none padding-standard margin-top">Ver</button>
+                        <p>13/01</p>
+                        <p>19H30</p>
+                        <button class="border-radius border-none padding-standard margin-top"><a href="https://drive.google.com/drive/folders/1d6BlbHOqU1D-vdPWBx-kGKJbRLGDNuXM" target="_blank">Acessar</a></button>
                     </main>
                 </div>
                 
                 <div class="column is-one-third caixa">
                     <header class="caixa-header">
-                        <h3>INTRODUÇÃO AO PYTHON 3<h3>
+                        <h3>ELIF E <br>FOR<h3>
                     </header>
                     <main class="caixa-content">
-                        <p >21/01</p>
-                        <button class="border-radius border-none padding-standard margin-top">Ver</button>
+                        <p >18/01</p>
+                        <p>19H30</p>
+                        <button class="border-radius border-none padding-standard margin-top"><a href="https://drive.google.com/drive/folders/1GNupw13Ul_yJWMQXX6_7LEbWYSOaM1RE" target="_blank">Acessar</a></button>
                     </main>
                 </div>
             </div>
@@ -238,31 +255,34 @@
             <div class="columns">
                 <div class="column is-one-third caixa">
                     <header class="caixa-header">
-                        <h3>INTRODUÇÃO AO PYTHON 3<h3>
+                        <h3>LAÇOS DE REPETIÇÃO WHILE<h3>
                     </header>
                     <main class="caixa-content">
-                        <p >21/01</p>
-                        <button class="border-radius border-none padding-standard margin-top">Ver</button>
+                        <p >19/01</p>
+                        <p>19H30</p>
+                        <button class="border-radius border-none padding-standard margin-top"><a href="https://drive.google.com/drive/folders/1r2mEPyGUqNVDP2yqczj1c1MbUTxcmAmx" target="_blank">Acessar</a></button>
                     </main>
                 </div>
                 
                 <div class="column is-one-third caixa">
                     <header class="caixa-header">
-                        <h3>INTRODUÇÃO AO PYTHON 3<h3>
+                        <h3>ESTRUTURA DE <br>DADOS<h3>
                     </header>
                     <main class="caixa-content">
-                        <p >21/01</p>
-                        <button class="border-radius border-none padding-standard margin-top">Ver</button>
+                        <p >20/01</p>
+                        <p>19H30</p>
+                        <button class="border-radius border-none padding-standard margin-top"><a href="https://drive.google.com/drive/folders/1PpGtvH9r9aXsGByIGoBwRAsoazMDz5FK" target="_blank">Acessar</a></button>
                     </main>
                 </div>
                 
                 <div class="column is-one-third caixa">
                     <header class="caixa-header">
-                        <h3>INTRODUÇÃO AO PYTHON 3<h3>
+                        <h3>BIBLIOTECAS <br>PYTHON<h3>
                     </header>
                     <main class="caixa-content">
                         <p >21/01</p>
-                        <button class="border-radius border-none padding-standard margin-top">Ver</button>
+                        <p>19H30</p>
+                        <button class="border-radius border-none padding-standard margin-top"><a href="https://drive.google.com/drive/folders/16CRL6Th3wVqM5V5UNorCkW2A6k76E5-K" target="_blank">Acessar</a></button>
                     </main>
                 </div>
             </div>

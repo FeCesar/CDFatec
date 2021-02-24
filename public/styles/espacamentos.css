@@ -7,6 +7,9 @@
 .padding-standard{
     padding: 3%;
 }
+.padding-standard-short{
+    padding: 1%;
+}
 .padding-top{
     padding-top: 5%;
 }
@@ -20,6 +23,9 @@
 }
 .margin-top-high{
     margin-top: 10%;
+}
+.margin-top-short{
+    margin-top: 2%;
 }
 .margin-bottom{
     margin-bottom: 5%;

@@ -13,3 +13,12 @@
 .pointer{
     cursor: pointer;
 }
+.bold{
+    font-weight: bold !important;
+}
+.upper{
+    text-transform: uppercase !important;
+}
+.size-22{
+    font-size: 22px;
+}
