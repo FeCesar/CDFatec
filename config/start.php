@@ -36,6 +36,20 @@
             exit;
         }
 
+        $sql = "CREATE TABLE IF NOT EXISTS newslatter(
+            new_id int primary key auto_increment not null,
+            new_nome varchar(255),
+            new_email varchar(255)
+        )";
+
+        $stmt = $conn->prepare($sql);
+        $result = $stmt->execute();
+
+        if(!$result){
+            var_dump($stmt->erroInfo());
+            exit;
+        }
+
         $sql = "CREATE TABLE IF NOT EXISTS user(
             user_id int primary key auto_increment not null,
             user_nome varchar(255),

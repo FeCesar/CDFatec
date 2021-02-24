@@ -18,3 +18,7 @@
 .bg-purple{
     background-color: rgba(47,23,75, 1) !important;
 }
+
+.bg-gray{
+    background-color: #f9f9f9 !important;
+}

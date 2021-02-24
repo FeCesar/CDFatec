@@ -322,11 +322,11 @@
     </section>
 
 
+    <!-- COMMENTS -->
     <section class="container comments">
-
         <article class="media">
             <div class="media-content">
-                <div class="content">
+                <div class="content"  id="newslatter">
                     <p>
                         <strong>John Smith</strong> <small>21/01/2021</small>
                         <br>
@@ -334,7 +334,44 @@
                     </p>
                 </div>
         </article>
+    </section>
 
+
+     <!-- NEWSLATTER -->
+    <section class="hero">
+        <div class="hero-body bg-gray">
+            <div class="container">
+
+                <p class="title">Newslatter</p>
+                <p class="subtitle">Receba em primeira mão todos os posts do blog!</p>
+                
+                <!-- ERRO EMAIL INVÁLIDO -->
+                <?php if(isset($_SESSION['error_email_invalido_newslatter'])): ?>
+                    <h3 class="has-text-danger margin-bottom-short">Email Inválido!</h3>
+                <?php endif; unset($_SESSION['error_email_invalido_newslatter']);?>
+
+                <!-- ERRO EMAIL CADASTRADO -->
+                <?php if(isset($_SESSION['error_email_cadastrado'])): ?>
+                    <h3 class="has-text-danger margin-bottom-short">Email Já Cadastrado!</h3>
+                <?php endif; unset($_SESSION['error_email_cadastrado']);?>
+
+                <!-- SUCESS EMAIL CADASTRADO -->
+                <?php if(isset($_SESSION['success_email_cadastrado'])): ?>
+                    <h3 class="has-text-success margin-bottom">Email Cadastrado! A partir de agora você irá 
+                    começar a receber nossos posts no seu email!</h3>
+                <?php endif; unset($_SESSION['success_email_cadastrado']) ?>
+
+                <form action="controller/newslatter.php" method="post">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="input margin-bottom-short" name="nome" placeholder="Ex.: Thiago">
+                    <label for="email">Email</label>
+                    <input type="email" class="input" name="email" placeholder="Ex.: Thiago@Fatec.sp.gov.br">
+                    <input type="hidden" name="url" value="<?php echo $urlAtual; ?>">
+
+                    <input type="submit" class="padding-standard-short margin-top-short pointer btn-login" value="Participar">
+                </form>
+            </div>
+        </div>
     </section>
 
     <!-- RODAPÉ -->
