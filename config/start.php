@@ -40,7 +40,11 @@
             user_id int primary key auto_increment not null,
             user_nome varchar(255),
             user_email varchar(255),
-            user_pass varchar(255)
+            user_pass varchar(255),
+            admin_github varchar(255),
+            admin_linkedin varchar(255),
+            admin_instagram varchar(255),
+            admin_pic varchar(255)
             )";
 
         $stmt = $conn->prepare($sql);
@@ -93,6 +97,8 @@
             var_dump($stmt->errorInfo());
             exit;
         }
+
+        header("Location: ../index.php");
 
     } catch(PDOException $e){
         echo "Error" . $e->getMessage();
