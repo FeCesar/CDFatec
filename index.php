@@ -66,25 +66,27 @@
                 </div>
                 <!-- BUTTONS OF NAVBAR END -->
 
-
-                <!-- SEM LOGAR -->
-                <div class="navbar-end">
-                    <div class="navbar-item">
-                        <div>
-                            <a class="button btn-login" onClick="openModal('modalRegistro')"><strong>Cadastar</strong></a>
-                            <a class="button btn-login" onClick="openModal('modalLogar')">Entrar</a>
+                <?php if(isset($_SESSION['dados'])){ ?>
+                    <!-- LOGADO  -->
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                            <div> 
+                                <a href="#"><i class="far fa-user btn-user"></i></a>
+                                <a href="controller/logout.php"><i class="fas fa-sign-out-alt color-purple"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- LOGADO  -->
-                <div class="navbar-end display-none">
-                    <div class="navbar-item">
-                        <div> 
-                            <a href="#"><i class="far fa-user btn-user"></i></a>
+                <?php } else{ ?>
+                    <!-- SEM LOGAR -->
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                            <div>
+                                <a class="button btn-login" onClick="openModal('modalRegistro')"><strong>Cadastar</strong></a>
+                                <a class="button btn-login" onClick="openModal('modalLogar')">Entrar</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php } ?>
 
             </div>
         </nav>

@@ -47,6 +47,7 @@
             
             $row = $stmtAdmin->fetch(PDO::FETCH_ASSOC);
             $_SESSION['dados'] = $row;
+            header("Location: ../index.php");
 
         } 
 
@@ -54,6 +55,7 @@
 
             $row = $stmtUser->fetch(PDO::FETCH_ASSOC);
             $_SESSION['dados'] = $row;
+            header("Location: ../index.php");
 
         }
         
