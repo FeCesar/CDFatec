@@ -1,3 +1,10 @@
+<?php
+
+    session_start();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt_br">
 <head>
@@ -61,7 +68,7 @@
 
 
                 <!-- SEM LOGAR -->
-                <div class="navbar-end display-none">
+                <div class="navbar-end">
                     <div class="navbar-item">
                         <div>
                             <a class="button btn-login" onClick="openModal('modalRegistro')"><strong>Cadastar</strong></a>
@@ -71,7 +78,7 @@
                 </div>
 
                 <!-- LOGADO  -->
-                <div class="navbar-end">
+                <div class="navbar-end display-none">
                     <div class="navbar-item">
                         <div> 
                             <a href="#"><i class="far fa-user btn-user"></i></a>
@@ -88,12 +95,23 @@
             <div class="card">
                 <header class="modal-card-head">
                     <p class="modal-card-title">Entrar</p>
+
+                    <!-- ERRO EMAIL INVÁLIDO -->
+                    <?php if(isset($_SESSION['error_email_invalido'])): ?>
+                        <h3 class="has-text-danger">Insira um Email Válido!</h3>
+                    <?php endif; unset($_SESSION['error_email_invalido']);?>
+
+                    <!-- ERRO CONTA INEXISTENTE -->
+                    <?php if(isset($_SESSION['conta_inexistente'])): ?>
+                        <h3 class="has-text-danger">Conta Inválida!</h3>
+                    <?php endif; unset($_SESSION['conta_inexistente']); ?>
+
                 </header>
                 <section class="modal-card padding-standard">
-                    <form method="post" action="#">
+                    <form method="post" action="controller/verifyLogin.php">
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
-                                <input class="input" type="email" name="email" placeholder="Email">
+                                <input class="input" type="email" name="email" placeholder="Email" required>
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-envelope"></i>
                                 </span>
@@ -102,7 +120,7 @@
                         
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="password" name="pass" placeholder="Password">
+                                <input class="input" type="password" name="pass" placeholder="Password" required>
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-lock"></i>
                                 </span>
