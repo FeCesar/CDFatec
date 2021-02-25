@@ -72,10 +72,7 @@
         $sql = "CREATE TABLE IF NOT EXISTS post(
             post_id int primary key auto_increment not null,
             post_title varchar(255),
-            post_primeiro_paragrafo text,
-            post_segundo_paragrafo text,
-            post_terceiro_paragrafo text,
-            post_quarto_paragrafo text,
+            post_content longtext,
             admin_id int,
                 constraint fk_admin_post
                 foreign key (admin_id) 

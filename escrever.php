@@ -1,6 +1,7 @@
 <?php
 
     session_start();
+    include_once('controller/verifySession.php');
     $urlAtual = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 
 ?>
@@ -202,12 +203,12 @@
         <div class="hero-body">
             <div class="padding-left title-banner">
                 <p class="title color-white">
-                    Blog<br>
+                    Criar <br>
                     Ciência de Dados
                 </p> 
 
                 <?php if(isset($_SESSION['dados'])): ?>
-                    <a href="escrever.php"><button class="button is-medium is-fullwidth btn-banner">
+                    <a href="#"><button class="button is-medium is-fullwidth btn-banner">
                         <i class="fas fa-pencil-alt" style="margin-right: 10px;"></i>Escrever Post
                     </button></a>
                 <?php endif; ?>
@@ -222,46 +223,6 @@
             </div>
         </div>
     </section>
-
-    <!-- BLOG -->
-    <main class="container" style="margin-bottom: 12%;">
-
-        <h2 class="upper bold size-22 margin-top-short">Posts</h2>
-
-        <div class="columns is-3">
-
-            <div class="column is-half post">
-                <div class="post-header">
-                    <h1>Title</h1>
-                    <h2>Subtitle</h2>
-                </div>
-
-                <div class="more">
-                    <a href="post.php">Ver Mais <i class="fas fa-angle-right"></i></a>
-                </div>
-
-                <div class="post-footer">
-                    <p>21/01/2021</p>
-                </div>
-            </div>
-
-            <div class="column post">
-                <div class="post-header">
-                    <h1>Title</h1>
-                    <h2>Subtitle</h2>
-                </div>
-
-                <div class="more">
-                    <a href="post.php">Ver Mais <i class="fas fa-angle-right"></i></a>
-                </div>
-
-                <div class="post-footer">
-                    <p>22/01/2021</p>
-                </div>
-            </div>
-        </div>
-
-    </main>
 
 
     <!-- RODAPÉ -->
@@ -301,3 +262,7 @@
 
 </body>
 </html>
+
+
+
+    
