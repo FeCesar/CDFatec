@@ -75,12 +75,18 @@
 
 
                 <?php if(isset($_SESSION['dados'])){ ?>
+                    <?php if($_SESSION['dados']['is_admin'] == 1){$admin = 1; $id = $_SESSION['dados']['admin_id'];}else{$admin = 0; $id = $_SESSION['dados']['user_id'];} ?>
                     <!-- LOGADO  -->
                     <div class="navbar-end">
                         <div class="navbar-item">
                             <div>
-                                <a href="#"><i class="far fa-user btn-user"></i></a>
-                                <a href="controller/logout.php?a=<?php echo $urlAtual; ?>"><i class="fas fa-sign-out-alt color-purple"></i></a>
+                                <form action="user.php" method="post">
+                                    <input type="hidden" name="admin" value="<?php echo $admin; ?>">
+                                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                    <label for="submit"><i class="far fa-user pointer"></i></label>
+                                    <input id="submit" type="submit" value="enviar" class="display-none">
+                                    <a href="controller/logout.php?a=<?php echo $urlAtual; ?>"><i class="fas fa-sign-out-alt color-purple"></i></a>
+                                </form>      
                             </div>
                         </div>
                     </div>

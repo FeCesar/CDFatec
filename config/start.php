@@ -25,7 +25,9 @@
             admin_pass varchar(255),
             admin_github varchar(255),
             admin_linkedin varchar(255),
-            admin_instagram varchar(255)
+            admin_instagram varchar(255),
+            admin_bio varchar(500),
+            is_admin int
             )";
 
         $stmt = $conn->prepare($sql);
@@ -55,10 +57,12 @@
             user_nome varchar(255),
             user_email varchar(255),
             user_pass varchar(255),
-            admin_github varchar(255),
-            admin_linkedin varchar(255),
-            admin_instagram varchar(255),
-            admin_pic varchar(255)
+            user_github varchar(255),
+            user_linkedin varchar(255),
+            user_instagram varchar(255),
+            user_pic varchar(255),
+            user_bio varchar(500),
+            is_admin int
             )";
 
         $stmt = $conn->prepare($sql);
@@ -73,10 +77,15 @@
             post_id int primary key auto_increment not null,
             post_title varchar(255),
             post_content longtext,
+            post_date date,
             admin_id int,
                 constraint fk_admin_post
                 foreign key (admin_id) 
-                references administrador(admin_id)
+                references administrador(admin_id),
+            user_id int,
+                constraint fk_user_post
+                foreign key (user_id)
+                references user(user_id)
             )";
 
         $stmt = $conn->prepare($sql);

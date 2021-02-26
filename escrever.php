@@ -76,12 +76,18 @@
 
 
                 <?php if(isset($_SESSION['dados'])){ ?>
+                    <?php if($_SESSION['dados']['is_admin'] == 1){$admin = 1; $id = $_SESSION['dados']['admin_id'];}else{$admin = 0; $id = $_SESSION['dados']['user_id'];} ?>
                     <!-- LOGADO  -->
                     <div class="navbar-end">
                         <div class="navbar-item">
                             <div>
-                                <a href="#"><i class="far fa-user btn-user"></i></a>
-                                <a href="controller/logout.php?a=<?php echo $urlAtual; ?>"><i class="fas fa-sign-out-alt color-purple"></i></a>
+                                <form action="user.php" method="post">
+                                    <input type="hidden" name="admin" value="<?php echo $admin; ?>">
+                                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                    <label for="submit"><i class="far fa-user pointer"></i></label>
+                                    <input id="submit" type="submit" value="enviar" class="display-none">
+                                    <a href="controller/logout.php?a=<?php echo $urlAtual; ?>"><i class="fas fa-sign-out-alt color-purple"></i></a>
+                                </form>      
                             </div>
                         </div>
                     </div>
@@ -96,7 +102,6 @@
                         </div>
                     </div>
                 <?php } ?>
-
                 <?php if(isset($_SESSION['sucess_conta_criada'])): ?>
                     <div class="notification is-success is-light">
                         <button class="delete"></button>
@@ -203,27 +208,58 @@
         <div class="hero-body">
             <div class="padding-left title-banner">
                 <p class="title color-white">
-                    Criar <br>
-                    Ciência de Dados
+                    Seu post no nosso site!
                 </p> 
-
-                <?php if(isset($_SESSION['dados'])): ?>
-                    <a href="#"><button class="button is-medium is-fullwidth btn-banner">
-                        <i class="fas fa-pencil-alt" style="margin-right: 10px;"></i>Escrever Post
-                    </button></a>
-                <?php endif; ?>
-
-                
-                <?php if(!isset($_SESSION['dados'])): ?>
-                    <button class="button is-medium is-fullwidth btn-banner" onClick="write_login()">
-                        <i class="fas fa-pencil-alt" style="margin-right: 10px;"></i>Escrever Post
-                    </button>
-                <?php endif; ?>
-
             </div>
         </div>
     </section>
 
+    <main class="container padding-standard">
+        <form method="post" action="controller/sendPost.php">
+            <div class="field">
+                <label for="title" class="size-22 lighter">Título</label>
+                <input type="text" class="input" name="title" required>
+            </div>
+
+            <div class="field">
+                <label for="subtitle" class="size-22 lighter">Subtítulo</label>
+                <input type="text" class="input" name="subtitle" required>
+            </div>
+
+            <div class="notification is-success">
+                <button class="delete"></button>
+                <h3>Formatação do post</h3>
+                <p>Para ter o seu post bem formatado, os paragrafos precisam estar entre uma tag <strong>< p ></strong> seguida de
+                <strong>< /p ></strong>.</p>
+            </div>
+
+            <div class="field">
+                <label for="content" class="size-22 lighter">Post</label>
+                <textarea class="textarea" placeholder="<p>Paragrafo</p>" rows="10" required name="content"></textarea>
+            </div>
+
+            <input type="hidden" name="id_escritor" value="
+                <?php 
+                    if($_SESSION['dados']['is_admin'] == 1){
+                        echo $_SESSION['dados']['admin_id'];
+                    } else{
+                        echo $_SESSION['dados']['user_id'];
+                    }
+                ?>
+            ">
+
+            <input type="hidden" name="data" value="
+                <?php 
+                
+                    $date = date('d-m-Y');
+                    echo $date;
+                    
+                ?>
+            ">
+
+            <input type="submit" class="button btn-login" value="Enviar">
+        </form>
+    </main>
 
     <!-- RODAPÉ -->
     <footer class="footer banner">

@@ -30,3 +30,7 @@
     transition: 0.4s;
     color:rgba(47, 23, 75, 0.4);
 }
+
+.navbar-item form input[type="submit"]{
+    font-family: fontawesome;
+}

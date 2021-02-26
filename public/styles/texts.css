@@ -16,6 +16,9 @@
 .bold{
     font-weight: bold !important;
 }
+.lighter{
+    font-weight: lighter !important;
+}
 .upper{
     text-transform: uppercase !important;
 }
