@@ -1,6 +1,7 @@
 <?php
 
     session_start();
+    include_once('controller/verifySession.php');
     $admin = $_POST['admin'];
     $id = $_POST['id'];
 
