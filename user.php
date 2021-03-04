@@ -2,11 +2,14 @@
 
     session_start();
     include_once('controller/verifySession.php');
-    $admin = $_POST['admin'];
-    $id = $_POST['id'];
 
-    if($admin == 1){
-        header('Location: user_admin.php');
+    if(!isset($_SESSION['verificado'])){
+        $admin = $_POST['admin'];
+        $id = $_POST['id'];
+    
+        if($admin == 1){
+            header('Location: user_admin.php');
+        }
     }
 
     $urlAtual = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
@@ -38,6 +41,7 @@
 <link rel="stylesheet" href="./public/styles/faq.css" />
 <link rel="stylesheet" href="./public/styles/footer.css" />
 <link rel="stylesheet" href="./public/styles/buttons.css" />
+<link rel="stylesheet" href="./public/styles/perfil.css" />
 
 <!-- Bulma -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
@@ -222,45 +226,66 @@
 
 <!-- CONFIGS -->
 <main class="container">
+
+    <?php if(isset($_SESSION['sucess_update'])): ?>
+        <div class="notification is-success is-light margin-top">
+            <button class="delete"></button>
+            Conta Atualizada com Sucesso!
+        </div>
+    <?php endif; unset($_SESSION['sucess_update']);?>
+
     <form action="controller/updateUser.php" method="post" class="columns padding-standard">
         <div class="column is-half">
 
             <div class="field">
                 <label for="nome" class="size-22 lighter">Nome</label>
-                <input type="text" id="nome" class="input is-normal" value="<?php echo $dados['user_nome']; ?>">
+                <input type="text" id="nome" class="input is-normal" name="nome" value="<?php echo $dados['user_nome']; ?>">
             </div>
 
             <div class="field">
                 <label for="email" class="size-22 lighter">Email</label>
-                <input type="text" id="email" class="input is-normal" value="<?php echo $dados['user_email']; ?>">
+                <input type="text" id="email" class="input is-normal" name="email" value="<?php echo $dados['user_email']; ?>">
             </div>
 
             <div class="field">
                 <label for="pass" class="size-22 lighter">Senha</label>
-                <input type="text" id="pass" class="input is-normal" value="<?php echo $dados['user_pass']; ?>">
+                <input type="text" id="pass" class="input is-normal" name="pass" value="<?php echo $dados['user_pass']; ?>">
             </div>
 
             <div class="field">
                 <label for="github" class="size-22 lighter">GitHub</label>
-                <input type="text" id="github" class="input is-normal" value="<?php echo $dados['user_github']; ?>">
+                <input type="text" id="github" class="input is-normal" name="github" value="<?php echo $dados['user_github']; ?>">
             </div>
 
             <div class="field">
                 <label for="linkedin" class="size-22 lighter">Linkedin</label>
-                <input type="text" id="linkedin" class="input is-normal" value="<?php echo $dados['user_linkedin']; ?>">
+                <input type="text" id="linkedin" class="input is-normal" name="linkedin" value="<?php echo $dados['user_linkedin']; ?>">
             </div>
 
             <div class="field">
-                <label for="instagram" class="size-22 lighter">Instagram</label>
-                <input type="text" id="instagram" class="input is-normal" value="<?php echo $dados['user_instagram']; ?>">
+                <label for="bio" class="size-22 lighter">Biografia</label>
+                <textarea class="textarea" id="bio" rows="5" name="bio"><?php echo $dados['user_bio']; ?></textarea>
             </div>
+
         </div>
+
         <div class="column">
+
             <div class="field">
                 <label for="instagram" class="size-22 lighter">Instagram</label>
-                <input type="text" id="instagram" class="input is-normal" value="<?php echo $dados['user_instagram']; ?>">
+                <input type="text" id="instagram" class="input is-normal"  name="instagram" value="<?php echo $dados['user_instagram']; ?>">
             </div>
+
+            <div class="field">
+                <label for="foto" class="size-22 lighter">Foto</label>
+                <input type="text" id="foto" class="input is-normal" name="foto" value="<?php echo $dados['user_pic']; ?>">
+            </div>
+
+            <img src="https://docs.google.com/uc?id=<?php echo $dados['user_pic']; ?>" class="img-perfil">
+
+            <input type="submit" value="Salvar" class="button btn-login center">
         </form>
+        
     </div>
 </main>
 
