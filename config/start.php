@@ -76,6 +76,7 @@
         $sql = "CREATE TABLE IF NOT EXISTS post(
             post_id int primary key auto_increment not null,
             post_title varchar(255),
+            post_subtitle varchar(255),
             post_content longtext,
             post_date date,
             admin_id int,

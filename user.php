@@ -16,8 +16,8 @@
 
     $dados = $_SESSION['dados'];
 
-    if(!$dados['admin_pic'] == ''){
-        $foto = explode("/", $dados['admin_pic']);
+    if(!$dados['user_pic'] == ''){
+        $foto = explode("/", $dados['user_pic']);
         $foto = $foto[5];
     }
 
@@ -285,14 +285,14 @@
 
             <div class="field">
                 <label for="foto" class="size-22 lighter">Foto</label>
-                    <i class="far fa-question-circle margin-left pointer" onClick="abreGif()"></i>
+                    <i class="far fa-question-circle margin-left pointer" onClick="openGif()"></i>
                 <p class="control">
                     <input type="text" id="foto" class="input is-normal" name="foto" value="<?php echo $dados['user_pic']; ?>">
                 </p>
-                <img src="./public/images/gif.gif" alt="Como selecionar o link da foto" id="gif" class="display-none" onClick="fechaGif()">
+                <img src="./public/images/gif.gif" alt="Como selecionar o link da foto" id="gif" class="display-none">
             </div>
 
-            <?php if(!$dados['admin_pic'] == ''): ?>
+            <?php if(!$dados['user_pic'] == ''): ?>
                 <img src="https://docs.google.com/uc?id=<?php echo $foto; ?>" class="img-perfil">
             <?php endif; ?>
 

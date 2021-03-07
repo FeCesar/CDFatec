@@ -248,15 +248,6 @@
                 ?>
             ">
 
-            <input type="hidden" name="data" value="
-                <?php 
-                
-                    $date = date('d-m-Y');
-                    echo $date;
-                    
-                ?>
-            ">
-
             <input type="submit" class="button btn-login" value="Enviar">
         </form>
     </main>

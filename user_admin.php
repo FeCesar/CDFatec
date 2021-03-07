@@ -218,8 +218,8 @@
     <div class="hero-body">
         <div class="padding-left title-banner">
             <p class="title color-white">
-                Informações da<br>
-                Conta
+                Painel de <br>
+                Administrador
             </p> 
         </div>
     </div>
@@ -228,6 +228,8 @@
 
 <!-- CONFIGS -->
 <main class="container">
+    
+    <h1 class="title padding-top">Informações da Conta</h1>
 
     <?php if(isset($_SESSION['sucess_update'])): ?>
         <div class="notification is-success is-light margin-top">
@@ -297,6 +299,28 @@
         
     </div>
 </main>
+
+<section class="container">
+    <h1 class="title padding-top">Solicitações do Blog</h1>
+
+
+    <?php 
+    
+        try{
+
+            $conn = new PDO('mysql:host=localhost;dbname=fatec', 'root', '');
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+
+
+        } catch(PDOException $e){
+            echo "Error" . $e->getMessage();
+        }
+    
+    ?>
+
+
+</section>
 
 
 <!-- RODAPÉ -->

@@ -12,7 +12,26 @@
         $subtitle = $_POST['subtitle'];
         $content = $_POST['content'];
         $id_escritor = $_POST['id_escritor'];
-        $data = $_POST['data'];
+
+        if($_SESSION['dados']['is_admin'] == 1){
+            $local_do_id = "admin_id";
+        } else{
+            $local_do_id = "user_id";
+        }
+
+        $data = date('Y/m/d');
+
+        $stmt = $conn->prepare("INSERT INTO post(post_title, post_subtitle, post_content, post_date, $local_do_id) VALUES(:title, :subtitle, :content, :dia, :id)");
+
+        $stmt->execute(array(
+            'title' => $title,
+            'subtitle' => $subtitle,
+            'content' => $content,
+            'dia' => $data,
+            'id' => $id_escritor
+        ));
+
+
 
     } catch(PDOException $e){
         echo "Error" . $e->getMessage();
