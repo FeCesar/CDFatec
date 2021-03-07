@@ -16,8 +16,10 @@
 
     $dados = $_SESSION['dados'];
 
-    $foto = explode("/", $dados['user_pic']);
-    $foto = $foto[5];
+    if(!$dados['admin_pic'] == ''){
+        $foto = explode("/", $dados['admin_pic']);
+        $foto = $foto[5];
+    }
 
 ?>
 <!DOCTYPE html>
@@ -290,7 +292,9 @@
                 <img src="./public/images/gif.gif" alt="Como selecionar o link da foto" id="gif" class="display-none" onClick="fechaGif()">
             </div>
 
-            <img src="https://docs.google.com/uc?id=<?php echo $foto; ?>" class="img-perfil">
+            <?php if(!$dados['admin_pic'] == ''): ?>
+                <img src="https://docs.google.com/uc?id=<?php echo $foto; ?>" class="img-perfil">
+            <?php endif; ?>
 
             <input type="submit" value="Salvar" class="button btn-login center">
         </form>

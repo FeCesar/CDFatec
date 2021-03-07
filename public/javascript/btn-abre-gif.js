@@ -1,13 +1,9 @@
-function abreGif(){
-    
+function openGif(){
     let element = document.getElementById('gif')
 
-    element.classList.remove('display-none')
-
-}
-
-function fechaGif(){
-    let element = document.getElementById('gif')
-
-    element.classList.add('display-none')
+    if(element.classList.contains('display-none')){
+        element.classList.remove('display-none')
+    } else{
+        element.classList.add('display-none')
+    }
 }
