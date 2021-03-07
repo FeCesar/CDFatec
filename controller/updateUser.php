@@ -14,8 +14,9 @@
         $github = $_POST['github'];
         $linkedin = $_POST['linkedin'];
         $instagram = $_POST['instagram'];
-        $foto = $_POST['foto'];
         $bio = $_POST['bio'];
+
+        $foto = $_POST['foto'];
 
         $id = $_SESSION['dados']['user_id'];
 

@@ -45,3 +45,10 @@
 .margin-standard{
     margin: 3%;
 }
+
+.float-left{
+    float: left;
+}
+.float-right{
+    float: right;
+}

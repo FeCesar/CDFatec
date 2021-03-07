@@ -16,6 +16,9 @@
 
     $dados = $_SESSION['dados'];
 
+    $foto = explode("/", $dados['user_pic']);
+    $foto = $foto[5];
+
 ?>
 <!DOCTYPE html>
 <html lang="pt_br">
@@ -55,6 +58,8 @@
 <script src="./public/javascript/btn-faq.js"></script>
 <!-- SCRIPT NOTIFICACAO -->
 <script src="./public/javascript/notificacao.js"></script>
+<!-- SCRIPT ABRE GIF -->
+<script src="./public/javascript/btn-abre-gif.js"></script>
 
 <title>Ciência de Dados - FATEC</title>
 </head>
@@ -63,7 +68,7 @@
 <header class="container">
     <nav class="navbar is-fixed-top padding-right padding-left bg-white" role="navigation" aria-label="main navegation">
         <div class="navbar-brand">
-            <a href="#homepage" class="navbar-item"><img src="./public/images/logo.png" alt="logo" style="max-height: 4rem"></a>
+            <a href="index.php#homepage" class="navbar-item"><img src="./public/images/logo.png" alt="logo" style="max-height: 4rem"></a>
             <!-- MENU MOBILE -->
             <a role="button" class="navbar-burger btn-mobile" aria-label="menu" aria-expanded="false" data-target="navMenu">
                 <span aria-hidden="true"></span>
@@ -74,9 +79,9 @@
         <!-- MENU DESKTOP -->
         <div id="navMenu" class="navbar-menu">
             <div class="navbar-start margin-left-short">
-                <a href="#sobre" class="navbar-item">Sobre</a>
-                <a href="#curso" class="navbar-item">Curso de Férias</a>
-                <a href="#faq" class="navbar-item">Perguntas Frequentes</a>
+                <a href="index.php#sobre" class="navbar-item">Sobre</a>
+                <a href="index.php#curso" class="navbar-item">Curso de Férias</a>
+                <a href="index.php#faq" class="navbar-item">Perguntas Frequentes</a>
                 <a href="blog.php" class="navbar-item">Blog</a>
             </div>
             <!-- BUTTONS OF NAVBAR END -->
@@ -278,10 +283,14 @@
 
             <div class="field">
                 <label for="foto" class="size-22 lighter">Foto</label>
-                <input type="text" id="foto" class="input is-normal" name="foto" value="<?php echo $dados['user_pic']; ?>">
+                    <i class="far fa-question-circle margin-left pointer" onClick="abreGif()"></i>
+                <p class="control">
+                    <input type="text" id="foto" class="input is-normal" name="foto" value="<?php echo $dados['user_pic']; ?>">
+                </p>
+                <img src="./public/images/gif.gif" alt="Como selecionar o link da foto" id="gif" class="display-none" onClick="fechaGif()">
             </div>
 
-            <img src="https://docs.google.com/uc?id=<?php echo $dados['user_pic']; ?>" class="img-perfil">
+            <img src="https://docs.google.com/uc?id=<?php echo $foto; ?>" class="img-perfil">
 
             <input type="submit" value="Salvar" class="button btn-login center">
         </form>
