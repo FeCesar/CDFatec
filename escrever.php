@@ -215,6 +215,15 @@
     </section>
 
     <main class="container padding-standard">
+
+
+    <?php if(isset($_SESSION['success_send_post'])): ?>
+        <div class="notification is-success">
+            <button class="delete"></button>
+            <h3>Post Enviado com Sucesso!</h3>
+        </div>
+    <?php endif; unset($_SESSION['success_send_post']); ?>
+
         <form method="post" action="controller/sendPost.php">
             <div class="field">
                 <label for="title" class="size-22 lighter">Título</label>

@@ -1,0 +1,10 @@
+.table{
+    width: 100%;
+}
+.table tr td{
+    padding: 40px;
+}
+.table button{
+    padding: 10px;
+    cursor: pointer;
+}

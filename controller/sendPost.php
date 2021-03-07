@@ -31,7 +31,8 @@
             'id' => $id_escritor
         ));
 
-
+        $_SESSION['success_send_post'] = true;
+        header('Location: ../escrever.php');
 
     } catch(PDOException $e){
         echo "Error" . $e->getMessage();

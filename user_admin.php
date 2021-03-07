@@ -42,6 +42,7 @@
 <link rel="stylesheet" href="./public/styles/footer.css" />
 <link rel="stylesheet" href="./public/styles/buttons.css" />
 <link rel="stylesheet" href="./public/styles/perfil.css" />
+<link rel="stylesheet" href="./public/styles/tables.css" />
 
 <!-- Bulma -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
@@ -302,24 +303,49 @@
 
 <section class="container">
     <h1 class="title padding-top">Solicitações do Blog</h1>
+    <table class="table margin-bottom ">
+
+        <?php 
+        
+            try{
+
+                $conn = new PDO('mysql:host=localhost;dbname=fatec', 'root', '');
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+
+                $stmt = $conn->query("SELECT * FROM post ORDER BY post_date DESC");
+
+                while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                
+                    $date = new DateTime($row['post_date']);
+
+                    
+                        echo "<tr>";
+
+                            echo "<td>" . $row['post_title'] . "</td>";
+
+                            echo "<td>" . $row['post_subtitle'] . "</td>";
+
+                            echo "<td>";
+                            echo $date->format('d/m/Y');
+                            echo "</td>";
+
+                            echo "<td>";
+                            echo "<a href='analisarPost.php?id=" . $row['post_id'] . "'><button>Analisar</button></a>";
+                            echo "</td>";
+
+                        echo "<tr>";
 
 
-    <?php 
-    
-        try{
+                }
 
-            $conn = new PDO('mysql:host=localhost;dbname=fatec', 'root', '');
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+            } catch(PDOException $e){
+                echo "Error" . $e->getMessage();
+            }
+        
+        ?>
 
-
-        } catch(PDOException $e){
-            echo "Error" . $e->getMessage();
-        }
-    
-    ?>
-
-
+    </table>
 </section>
 
 
