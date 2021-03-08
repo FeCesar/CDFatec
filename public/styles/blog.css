@@ -15,23 +15,20 @@
 }
 
 .post{
-    height: 180px;
+    height: 150px;
     margin-top: 3%;
     margin-right: 1%;
     transition: .9s;
-    background-color: rgba(47,23,75, 1);
-    color: white;
-}
-
-.post:hover{
-    transition: .4s;
+    background-color: white;
     background: rgba(47,23,75, 0.1);
     color:rgba(47,23,75, 1);
 }
 
-.post-header{
-    width: 70%;
+.post:hover{
+    transition: .4s;
+
 }
+
 .post-header h1{
     font-size: 20px;
     text-transform: uppercase;
@@ -40,26 +37,21 @@
 }
 
 .post-header h2{
+    margin-top: .1%;
     font-size: 18px;
     font-weight: lighter;
     padding-left: 2%;
 }
 
-.post-body{
-    line-height: 25px;
-}
-
-.post-footer{
-    margin-bottom: 1%;
-    position: absolute;
-    bottom: 0;
-}
-.post-footer p{
+.post-header p{
+    margin-top: 1%;
+    font-size: 18px;
+    font-weight: lighter;
     padding-left: 2%;
 }
 
-.more{
+.post-footer{
     float: right;
-    text-align: center;
-    margin-top: 4%;
+    padding-left: 2%;
+    margin-bottom: 1%;
 }

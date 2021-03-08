@@ -233,52 +233,43 @@
     <main class="container" style="margin-bottom: 12%;">
 
         <h2 class="upper bold size-22 margin-top-short">Posts</h2>
-        <div class="columns">
 
-        <?php
-        
-        
-            try{
-
-                $conn = new PDO('mysql:host=localhost;dbname=fatec', 'root', '');
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-
-                $stmt = $conn->query("SELECT * FROM post WHERE post_postado = 1 ORDER BY post_date DESC");
-
-                while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                    
-                    $date = new DateTime($row['post_date']);
-
-                    echo "<div class='column post'>";
-                        echo "<div class='post-header'>";
-                            echo "<h1>" . $row['post_title'] . "</h1>";
-                            echo "<h2>" . $row['post_subtitle'] . "</h2>";
-                        echo "</div>";
-                        
-                        echo "<div class='more'>";
-                            echo "<a href='post.php?id_post=" . $row['post_id'] . "'>Ver Mais <i class='fas fa-angle-right'></i></a>";
-                        echo "</div>";
-
-                        echo "<div class='post-footer'>";
-                            echo "<p>";
-                                echo $date->format('d/m/Y'); 
-                            echo "</p>";
-                        echo "</div>";
-                    echo "</div>";   
-                    
-                }
-                
-            } catch(PDOException $e){
-                echo "Error" . $e->getMessage();
-            }
-
-
+            <?php
             
-        
-        ?>
+            
+                try{
 
-        </div>
+                    $conn = new PDO('mysql:host=localhost;dbname=fatec', 'root', '');
+                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+
+                    $stmt = $conn->query("SELECT * FROM post WHERE post_postado = 1 ORDER BY post_date DESC");
+
+                    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                        
+                        $date = new DateTime($row['post_date']);
+
+                        echo "<div class='column is-full post border-radius'>";
+                            echo "<div class='post-header'>";
+                                echo "<h1>" . $row['post_title'] . "</h1>";
+                                echo "<h2>" . $row['post_subtitle'] . "</h2>";
+                                echo "<p>";
+                                    echo $date->format('d/m/Y'); 
+                                echo "</p>";
+                            echo "</div>";
+
+                            echo "<div class='post-footer'>";
+                                echo "<a href='post.php?id_post=" . $row['post_id'] . "'>Ver Mais <i class='fas fa-angle-right'></i></a>";
+                            echo "</div>";
+                        echo "</div>"; 
+                        
+                    }
+                    
+                } catch(PDOException $e){
+                    echo "Error" . $e->getMessage();
+                }
+            
+            ?>
 
     </main>
 
