@@ -1,9 +1,38 @@
-.img-perfil{
-    width: 100%;
-    padding: 2% 20% 1%;
+.circle{
+    height: 300px;
+    width: 300px;
     border-radius: 50%;
 }
-.center{
+.photo{
+    margin-left: 10%;
+}
+
+@media screen and (min-width: 768px){
+    .photo{
+        margin-left: 25%;
+        margin-top: 5%;
+    }
+}
+
+@media screen and (min-width:1024px){
+    .photo{
+        margin-left: 17%;
+    }
+}
+
+@media screen and (min-width: 1366px){
+    .photo{
+        margin-left: 23%;
+    }
+}
+
+@media screen and (min-width: 1440px){
+    .photo{
+        margin-left: 25%;
+    }
+}
+
+.column input[type='submit']{
+    margin-top: 5%;
     width: 100%;
-    margin-top: 6%;
 }

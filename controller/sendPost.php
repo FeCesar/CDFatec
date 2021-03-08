@@ -21,13 +21,14 @@
 
         $data = date('Y/m/d');
 
-        $stmt = $conn->prepare("INSERT INTO post(post_title, post_subtitle, post_content, post_date, $local_do_id) VALUES(:title, :subtitle, :content, :dia, :id)");
+        $stmt = $conn->prepare("INSERT INTO post(post_title, post_subtitle, post_content, post_date, post_postado, $local_do_id) VALUES(:title, :subtitle, :content, :dia, :postado ,:id)");
 
         $stmt->execute(array(
             'title' => $title,
             'subtitle' => $subtitle,
             'content' => $content,
             'dia' => $data,
+            'postado' => 0,
             'id' => $id_escritor
         ));
 

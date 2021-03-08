@@ -293,7 +293,7 @@
             </div>
 
             <?php if(!$dados['user_pic'] == ''): ?>
-                <img src="https://docs.google.com/uc?id=<?php echo $foto; ?>" class="img-perfil">
+                <div class="circle photo" style="background: url('https://docs.google.com/uc?id=<?php echo $foto; ?>'); background-size: 100%;"></div>
             <?php endif; ?>
 
             <input type="submit" value="Salvar" class="button btn-login center">

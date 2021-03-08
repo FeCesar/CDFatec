@@ -7,12 +7,42 @@
     
     $urlAtual = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 
-    $dados = $_SESSION['dados'];
+    try{
 
-    if(!$dados['admin_pic'] == ''){
-        $foto = explode("/", $dados['admin_pic']);
-        $foto = $foto[5];
+        $conn = new PDO('mysql:host=localhost;dbname=fatec', 'root' , '');
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+
+        $id_post = $_GET['id'];
+
+        $stmt = $conn->query("SELECT * FROM post WHERE post_id = $id_post");
+        $dados_post = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($dados_post['admin_id'] != NULL){
+            $tabela = "administrador";
+            $coluna = "admin_id";
+            $default = "admin_";
+
+        } else{
+            $tabela = "user";
+            $coluna = "user_id";
+            $default = "user_";
+        }
+
+        $id_usuario = $dados_post[$coluna];
+
+        $stmt = $conn->query("SELECT * FROM $tabela WHERE $coluna = $id_usuario");
+        $dados_escritor = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $dados_escritor[$default . 'pic'] = explode("/", $dados_escritor[$default . 'pic']);
+        $dados_escritor[$default . 'pic'] = $dados_escritor[$default . 'pic'][5];
+        
+        $date = new DateTime($dados_post['post_date']);
+
+    } catch(PDOException $e){
+        echo "Error" . $e->getMessage();
     }
+
 
 ?>
 
@@ -41,9 +71,9 @@
 <link rel="stylesheet" href="./public/styles/faq.css" />
 <link rel="stylesheet" href="./public/styles/footer.css" />
 <link rel="stylesheet" href="./public/styles/buttons.css" />
-<link rel="stylesheet" href="./public/styles/tables.css" />
 <link rel="stylesheet" href="./public/styles/perfil.css" />
-
+<link rel="stylesheet" href="./public/styles/tables.css" />
+<link rel="stylesheet" href="./public/styles/post.css" />
 
 <!-- Bulma -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
@@ -218,152 +248,53 @@
 <!-- HOMEPAGE -->
 <section class="hero banner is-halfheight" id="homepage">
     <div class="hero-body">
-        <div class="padding-left title-banner">
+        <div class="padding-left title-banner margin-top">
             <p class="title color-white">
-                Painel de <br>
-                Administrador
+                <?php echo $dados_post['post_title']; ?>
             </p> 
+            <p class="subtitle color-white" style="width: 50%;">
+                <?php echo $dados_post['post_subtitle']; ?>
+            </p>
         </div>
     </div>
 </section>
 
-
-<!-- CONFIGS -->
 <main class="container">
-    
-    <h1 class="title padding-top">Informações da Conta</h1>
-
-    <?php if(isset($_SESSION['sucess_update'])): ?>
-        <div class="notification is-success is-light margin-top">
-            <button class="delete"></button>
-            Conta Atualizada com Sucesso!
-        </div>
-    <?php endif; unset($_SESSION['sucess_update']);?>
-
-    <form action="controller/updateAdmin.php" method="post" class="columns padding-standard">
-        <div class="column is-half">
-
-            <div class="field">
-                <label for="nome" class="size-22 lighter">Nome</label>
-                <input type="text" id="nome" class="input is-normal" name="nome" value="<?php echo $dados['admin_nome']; ?>">
-            </div>
-
-            <div class="field">
-                <label for="email" class="size-22 lighter">Email</label>
-                <input type="text" id="email" class="input is-normal" name="email" value="<?php echo $dados['admin_email']; ?>">
-            </div>
-
-            <div class="field">
-                <label for="pass" class="size-22 lighter">Senha</label>
-                <input type="text" id="pass" class="input is-normal" name="pass" value="<?php echo $dados['admin_pass']; ?>">
-            </div>
-
-            <div class="field">
-                <label for="github" class="size-22 lighter">GitHub</label>
-                <input type="text" id="github" class="input is-normal" name="github" value="<?php echo $dados['admin_github']; ?>">
-            </div>
-
-            <div class="field">
-                <label for="linkedin" class="size-22 lighter">Linkedin</label>
-                <input type="text" id="linkedin" class="input is-normal" name="linkedin" value="<?php echo $dados['admin_linkedin']; ?>">
-            </div>
-
-            <div class="field">
-                <label for="bio" class="size-22 lighter">Biografia</label>
-                <textarea class="textarea" id="bio" rows="5" name="bio"><?php echo $dados['admin_bio']; ?></textarea>
-            </div>
-
+    <div class="text">
+        <div>
+            <?php echo $dados_post['post_content']; ?>
         </div>
 
-        <div class="column">
+        <div id="autor"></div>
 
-            <div class="field">
-                <label for="instagram" class="size-22 lighter">Instagram</label>
-                <input type="text" id="instagram" class="input is-normal"  name="instagram" value="<?php echo $dados['admin_instagram']; ?>">
+        <div class="autor">
+            <div class="columns">
+                <div class="column is-half">
+                    <div class="circle photo" style="background: url('https://docs.google.com/uc?id=<?php echo $dados_escritor[$default . 'pic']; ?>'); background-size: 100%;"></div>    
+                </div>
+                <div class="column margin-top">
+                    <h3><?php echo $dados_escritor[$default . 'nome']; ?></h3>
+                    <p><?php echo $dados_escritor[$default . 'bio']; ?></p>
+                    <p><?php echo $date->format('d/m/Y'); ?></p>
+
+                    <div class="social">
+                        <a href="<?php if($dados_escritor[$default . 'github'] == ''){echo '#autor'; $nada = true;}else{echo $dados_escritor[$default . 'github']; $nada = false;} ?>"  <?php if($nada != true){ echo "target='_blank'";}?>><i class="fab fa-github"></i></a>
+                        <a href="<?php if($dados_escritor[$default . 'instagram'] == ''){echo '#autor'; $nada = true;}else{echo $dados_escritor[$default . 'instagram']; $nada = false;} ?>" <?php if($nada != true){ echo "target='_blank'";}?>><i class="fab fa-instagram"></i></a>
+                    </div>
+
+                </div>
             </div>
-
-            <div class="field">
-                <label for="foto" class="size-22 lighter">Foto</label>
-                    <i class="far fa-question-circle margin-left pointer" onClick="openGif()"></i>
-                <p class="control">
-                    <input type="text" id="foto" class="input is-normal" name="foto" value="<?php echo $dados['admin_pic']; ?>">
-                </p>
-                <img src="./public/images/gif.gif" alt="Como selecionar o link da foto" id="gif" class="display-none">
-            </div>
-
-
-            <?php if(!$dados['admin_pic'] == ''): ?>
-                <div class="circle photo" style="background: url('https://docs.google.com/uc?id=<?php echo $foto; ?>'); background-size: 100%;"></div>
-            <?php endif; ?>
-
-            <input type="submit" value="Salvar" class="button btn-login center">
-        </form>
-        
+        </div>
     </div>
 </main>
 
-<section class="container">
-    <h1 class="title padding-top">Solicitações do Blog</h1>
-
-    <?php if(isset($_SESSION['success_was_blog'])): ?>
-        <div class="notification is-success is-light margin-top">
-            <button class="delete"></button>
-            Post Incluido no Blog!
-        </div>
-    <?php endif; unset($_SESSION['success_was_blog']);?>
-
-    <?php if(isset($_SESSION['success_wasnt_blog'])): ?>
-        <div class="notification is-danger is-light margin-top">
-            <button class="delete"></button>
-            Post Não Incluido no Blog!
-        </div>
-    <?php endif; unset($_SESSION['success_wasnt_blog']);?>
-
-    <table class="table margin-bottom ">
-
-        <?php 
-        
-            try{
-
-                $conn = new PDO('mysql:host=localhost;dbname=fatec', 'root', '');
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-
-                $stmt = $conn->query("SELECT * FROM post WHERE post_postado = 0 ORDER BY post_date DESC");
-
-                while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                
-                    $date = new DateTime($row['post_date']);
-
-                    
-                        echo "<tr>";
-
-                            echo "<td>" . $row['post_title'] . "</td>";
-
-                            echo "<td>" . $row['post_subtitle'] . "</td>";
-
-                            echo "<td>";
-                            echo $date->format('d/m/Y');
-                            echo "</td>";
-
-                            echo "<td>";
-                            echo "<a href='analisarPost.php?id=" . $row['post_id'] . "'><button>Analisar</button></a>";
-                            echo "</td>";
-
-                        echo "<tr>";
-
-
-                }
-
-            } catch(PDOException $e){
-                echo "Error" . $e->getMessage();
-            }
-        
-        ?>
-
-    </table>
+<section class="container padding-standard">
+    <form action="controller/postStatus.php" method="post" class="form">
+        <input type="hidden" name="id_post" value="<?php echo $id_post; ?>" >
+        <input type="submit" name="accept" value="Aceitar Post" class="button btn-login">
+        <input type="submit" name="denied" value="Recusar Post" class="button">
+    </form>
 </section>
-
 
 <!-- RODAPÉ -->
 <footer class="footer banner">

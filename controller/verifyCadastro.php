@@ -54,11 +54,12 @@
                 header("Location: ../" . $url);
             } 
             else{
-                $stmt = $conn->prepare("INSERT INTO user(user_nome, user_email, user_pass) VALUES (:user_nome, :user_email, :user_pass)");
+                $stmt = $conn->prepare("INSERT INTO user(user_nome, user_email, user_pass, is_admin) VALUES (:user_nome, :user_email, :user_pass, :admin)");
                 $stmt->execute(array(
                     'user_nome' => $nome,
                     'user_email' => $email,
-                    'user_pass' => $pass
+                    'user_pass' => $pass,
+                    'admin' => 0
                 ));
     
                 $stmt = $conn->query("SELECT * FROM user WHERE user_email = '$email'");

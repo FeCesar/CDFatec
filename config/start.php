@@ -79,6 +79,7 @@
             post_subtitle varchar(255),
             post_content longtext,
             post_date date,
+            post_postado int,
             admin_id int,
                 constraint fk_admin_post
                 foreign key (admin_id) 
