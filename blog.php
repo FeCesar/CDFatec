@@ -233,6 +233,7 @@
     <main class="container" style="margin-bottom: 12%;">
 
         <h2 class="upper bold size-22 margin-top-short">Posts</h2>
+        <div>
 
             <?php
             
@@ -243,9 +244,22 @@
                     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
-                    $stmt = $conn->query("SELECT * FROM post WHERE post_postado = 1 ORDER BY post_date DESC");
+                    $pagina = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
+                    
+                    $registros = 3;
 
-                    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    $stmt = $conn->query("SELECT * FROM post WHERE post_postado = 1");
+
+                    $totalRegistros = $stmt->rowCount();
+                    $totalPaginas = ceil($totalRegistros / $registros);
+
+                    $inicio = ($registros * $pagina) - $registros;
+                    $limite = $conn->query("SELECT * FROM post WHERE post_postado = 1 ORDER BY post_date DESC LIMIT $inicio, $registros");
+
+                    $anterior = $pagina - 1;
+                    $proximo = $pagina + 1;
+
+                    while($row = $limite->fetch(PDO::FETCH_ASSOC)){
                         
                         $date = new DateTime($row['post_date']);
 
@@ -270,9 +284,46 @@
                 }
             
             ?>
+        </div>
 
+        <div class="margin-top">
+            <nav class="pagination" role="navigation" aria-label="pagination">
+
+                <?php if($pagina > 1){ ?>
+
+                    <a class="pagination-previous" href="?pagina=<?php echo $anterior; ?>" title="This is the first page">Anterior</a>
+
+                <?php } else{?>
+
+                    <a class="pagination-previous" title="This is the first page" disabled>Anterior</a>
+
+                <?php } ?>
+
+
+                <?php if($pagina == $totalPaginas){ ?>
+
+                    <a class="pagination-next" disabled>Próxima Página</a>
+
+                <?php } else{ ?>
+
+                    <a class="pagination-next" href="?pagina=<?php echo $proximo; ?>">Próxima Página</a>
+
+                <?php } ?>
+
+                <ul class="pagination-list">
+
+                <?php for($i = 1; $i <= $totalPaginas; $i++){
+                    if($pagina == $i){
+                        echo "<li><a class='pagination-link is-current' aria-current='page'  href='?pagina=$i'>$i</a></li>";
+                    } else{
+                        echo "<li><a class='pagination-link' href='?pagina=$i' aria-current='page'>$i</a></li>";
+                    }
+                } ?>
+
+                </ul>
+            </nav>
+        </div>
     </main>
-
 
     <!-- RODAPÉ -->
     <footer class="footer banner">
