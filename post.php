@@ -3,6 +3,42 @@
     session_start();
     $urlAtual = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 
+    try{
+
+        $conn = new PDO('mysql:host=localhost;dbname=fatec', 'root' , '');
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+
+        $id_post = $_GET['id_post'];
+
+        $stmt = $conn->query("SELECT * FROM post WHERE post_id = $id_post");
+        $dados_post = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($dados_post['admin_id'] != NULL){
+            $tabela = "administrador";
+            $coluna = "admin_id";
+            $default = "admin_";
+
+        } else{
+            $tabela = "user";
+            $coluna = "user_id";
+            $default = "user_";
+        }
+
+        $id_usuario = $dados_post[$coluna];
+
+        $stmt = $conn->query("SELECT * FROM $tabela WHERE $coluna = $id_usuario");
+        $dados_escritor = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $dados_escritor[$default . 'pic'] = explode("/", $dados_escritor[$default . 'pic']);
+        $dados_escritor[$default . 'pic'] = $dados_escritor[$default . 'pic'][5];
+        
+        $date = new DateTime($dados_post['post_date']);
+
+    } catch(PDOException $e){
+        echo "Error" . $e->getMessage();
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +67,7 @@
     <link rel="stylesheet" href="./public/styles/blog.css" />
     <link rel="stylesheet" href="./public/styles/buttons.css" />
     <link rel="stylesheet" href="./public/styles/post.css" />
+    <link rel="stylesheet" href="./public/styles/perfil.css" />
 
     <!-- Bulma -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
@@ -202,107 +239,50 @@
     </div>
 
 
-    <!-- HOMEPAGE -->
-    <section class="hero banner is-halfheight" id="homepage">
-        <div class="hero-body">
-            <div class="padding-left title-banner">
-                <p class="title color-white">
-                    Title
-                </p>
-                <p class="subtitle color-white">
-                    Subtitle
-                </p>
-            </div>
+<!-- HOMEPAGE -->
+<section class="hero banner is-halfheight" id="homepage">
+    <div class="hero-body">
+        <div class="padding-left title-banner margin-top">
+            <p class="title color-white">
+                <?php echo $dados_post['post_title']; ?>
+            </p> 
+            <p class="subtitle color-white" style="width: 50%;">
+                <?php echo $dados_post['post_subtitle']; ?>
+            </p>
         </div>
-    </section>
+    </div>
+</section>
 
 
     <!-- POST -->
-    <main class="container">
-        <div class="text">
-            <div>
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
-                    pariatur ex repellendus quia ullam consectetur facilis, 
-                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
-                    pariatur ex repellendus quia ullam consectetur facilis, 
-                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
-                    pariatur ex repellendus quia ullam consectetur facilis, 
-                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
-                </p>
+<main class="container">
+    <div class="text">
+        <div>
+            <?php echo $dados_post['post_content']; ?>
+        </div>
 
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
-                    pariatur ex repellendus quia ullam consectetur facilis, 
-                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
-                    pariatur ex repellendus quia ullam consectetur facilis, 
-                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
-                    pariatur ex repellendus quia ullam consectetur facilis, 
-                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
-                    pariatur ex repellendus quia ullam consectetur facilis, 
-                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
-                </p>
+        <div id="autor"></div>
 
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
-                    pariatur ex repellendus quia ullam consectetur facilis, 
-                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
-                    pariatur ex repellendus quia ullam consectetur facilis, 
-                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
-                    pariatur ex repellendus quia ullam consectetur facilis, 
-                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
-                </p>
+        <div class="autor">
+            <div class="columns">
+                <div class="column is-half">
+                    <div class="circle photo" style="background: url('https://docs.google.com/uc?id=<?php echo $dados_escritor[$default . 'pic']; ?>'); background-size: 100%;"></div>    
+                </div>
+                <div class="column margin-top">
+                    <h3><?php echo $dados_escritor[$default . 'nome']; ?></h3>
+                    <p><?php echo $dados_escritor[$default . 'bio']; ?></p>
+                    <p><?php echo $date->format('d/m/Y'); ?></p>
 
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
-                    pariatur ex repellendus quia ullam consectetur facilis, 
-                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
-                    pariatur ex repellendus quia ullam consectetur facilis, 
-                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
-                    pariatur ex repellendus quia ullam consectetur facilis, 
-                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
-                    pariatur ex repellendus quia ullam consectetur facilis, 
-                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, libero aliquam, recusandae a error quasi 
-                    pariatur ex repellendus quia ullam consectetur facilis, 
-                    sequi similique id culpa aliquid sapiente nesciunt repudiandae!
-                </p>
-            </div>
-
-            <div class="autor">
-                <div class="columns">
-                    <div class="column is-half">
-                        <figure><img src="https://ef564920920608e03abb-7d34ef097b6ab6c586dfc84157128505.ssl.cf1.rackcdn.com/PostImagem/36734/foto-de-perfil-profissional_o1eh30s23krp31qn41l3havc2fti.JPG" alt=""></figure>
+                    <div class="social">
+                        <a href="<?php if($dados_escritor[$default . 'github'] == ''){echo '#autor'; $nada = true;}else{echo $dados_escritor[$default . 'github']; $nada = false;} ?>"  <?php if($nada != true){ echo "target='_blank'";}?>><i class="fab fa-github"></i></a>
+                        <a href="<?php if($dados_escritor[$default . 'instagram'] == ''){echo '#autor'; $nada = true;}else{echo $dados_escritor[$default . 'instagram']; $nada = false;} ?>" <?php if($nada != true){ echo "target='_blank'";}?>><i class="fab fa-instagram"></i></a>
                     </div>
-                    <div class="column">
-                        <h3>Júlio Marques</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus quasi voluptatem voluptas non alias fugiat nostrum 
-                            vel laboriosam pariatur maiores, tempora ipsum aut! 
-                            Itaque aliquid molestias nisi voluptatum asperiores a.
-                        </p>
-                        <p>21/01/2021</p>
 
-                        <div class="social">
-                            <a href="#"><i class="fab fa-github"></i></a>
-                            <a href="#  "><i class="fab fa-instagram"></i></a>
-                        </div>
-
-                    </div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+</main>
 
 
     <section class="container make-comments">

@@ -233,38 +233,51 @@
     <main class="container" style="margin-bottom: 12%;">
 
         <h2 class="upper bold size-22 margin-top-short">Posts</h2>
+        <div class="columns">
 
-        <div class="columns is-3">
+        <?php
+        
+        
+            try{
 
-            <div class="column is-half post">
-                <div class="post-header">
-                    <h1>Title</h1>
-                    <h2>Subtitle</h2>
-                </div>
+                $conn = new PDO('mysql:host=localhost;dbname=fatec', 'root', '');
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
-                <div class="more">
-                    <a href="post.php">Ver Mais <i class="fas fa-angle-right"></i></a>
-                </div>
+                $stmt = $conn->query("SELECT * FROM post WHERE post_postado = 1 ORDER BY post_date DESC");
 
-                <div class="post-footer">
-                    <p>21/01/2021</p>
-                </div>
-            </div>
+                while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    
+                    $date = new DateTime($row['post_date']);
 
-            <div class="column post">
-                <div class="post-header">
-                    <h1>Title</h1>
-                    <h2>Subtitle</h2>
-                </div>
+                    echo "<div class='column post'>";
+                        echo "<div class='post-header'>";
+                            echo "<h1>" . $row['post_title'] . "</h1>";
+                            echo "<h2>" . $row['post_subtitle'] . "</h2>";
+                        echo "</div>";
+                        
+                        echo "<div class='more'>";
+                            echo "<a href='post.php?id_post=" . $row['post_id'] . "'>Ver Mais <i class='fas fa-angle-right'></i></a>";
+                        echo "</div>";
 
-                <div class="more">
-                    <a href="post.php">Ver Mais <i class="fas fa-angle-right"></i></a>
-                </div>
+                        echo "<div class='post-footer'>";
+                            echo "<p>";
+                                echo $date->format('d/m/Y'); 
+                            echo "</p>";
+                        echo "</div>";
+                    echo "</div>";   
+                    
+                }
+                
+            } catch(PDOException $e){
+                echo "Error" . $e->getMessage();
+            }
 
-                <div class="post-footer">
-                    <p>22/01/2021</p>
-                </div>
-            </div>
+
+            
+        
+        ?>
+
         </div>
 
     </main>
