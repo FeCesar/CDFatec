@@ -98,10 +98,11 @@
             exit;
         }
 
-        $sql = "CREATE TABLE IF NOT EXISTS comment(
+        $sql = "CREATE TABLE IF NOT EXISTS comments(
                 comment_id int primary key auto_increment not null,
                 comment_content text,
                 comment_date_time datetime,
+                is_admin int,
                 user_id int,
                     constraint fk_user_comment
                     foreign key (user_id)

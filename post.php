@@ -30,8 +30,10 @@
         $stmt = $conn->query("SELECT * FROM $tabela WHERE $coluna = $id_usuario");
         $dados_escritor = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $dados_escritor[$default . 'pic'] = explode("/", $dados_escritor[$default . 'pic']);
-        $dados_escritor[$default . 'pic'] = $dados_escritor[$default . 'pic'][5];
+        if($dados_escritor[$default . 'pic'] != ''){
+            $dados_escritor[$default . 'pic'] = explode("/", $dados_escritor[$default . 'pic']);
+            $dados_escritor[$default . 'pic'] = $dados_escritor[$default . 'pic'][5];
+        }
         
         $date = new DateTime($dados_post['post_date']);
 
@@ -81,6 +83,8 @@
     <script src="./public/javascript/btn-faq.js"></script>
     <!-- SCRIPT NOTIFICACAO -->
     <script src="./public/javascript/notificacao.js"></script>
+    <!-- SCRIPT WRITE POST -->
+    <script src="./public/javascript/btn-write-post.js"></script>
 
     <title>Ciência de Dados - FATEC</title>
 </head>
@@ -265,7 +269,7 @@
 
         <div class="autor">
             <div class="columns">
-                <div class="column is-half">
+                <div class="column is-half" id="comment">
                     <div class="circle photo" style="background: url('https://docs.google.com/uc?id=<?php echo $dados_escritor[$default . 'pic']; ?>'); background-size: 100%;"></div>    
                 </div>
                 <div class="column margin-top">
@@ -292,14 +296,30 @@
         <article class="media">
             <div class="media-content">
                 <div class="field">
-                    <p class="control">
-                        <textarea class="textarea" placeholder="Adicionar Comentário..."></textarea>
-                    </p>
+                    <form action="controller/sendComment.php" method="post">
+                        <p class="control">
+                            <textarea class="textarea" name="comentario" placeholder="Adicionar Comentário..."></textarea>
+                        </p>
+                        <input type="hidden" name="post_id" value="<?php echo $id_post; ?>">
                 </div>
-                <nav class="level-right">
-                    <div class="level-right">
-                        <div class="level-item">
-                            <a class="button is-info">Comentar</a>
+                    <nav class="level-right">
+                        <div class="level-right">
+                            <div class="level-item">
+
+                            
+
+                            <?php if(isset($_SESSION['dados'])): ?>
+                                <button class="button is-medium is-fullwidth is-info" type="submit">
+                                    Comentar
+                                </button>
+                            <?php endif; ?>
+
+                        </form>
+                        <?php if(!isset($_SESSION['dados'])): ?>
+                            <button class="button is-medium is-fullwidth is-info" onClick="write_login()">
+                                Comentar
+                            </button>
+                        <?php endif; ?>
                         </div>
                     </div>
                 </nav>
@@ -310,15 +330,88 @@
 
     <!-- COMMENTS -->
     <section class="container comments">
+
+        <?php if(isset($_SESSION['success_comment'])): ?>
+            <div class="notification is-success">
+                <button class="delete"></button>
+                <h3>Comentário Enviado com Sucesso!</h3>
+            </div>
+        <?php endif; unset($_SESSION['success_comment']);?>
+
         <article class="media">
             <div class="media-content">
                 <div class="content"  id="newslatter">
-                    <p>
-                        <strong>John Smith</strong> <small>21/01/2021</small>
-                        <br>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
-                    </p>
-                </div>
+
+                    
+                    <?php 
+                    
+                    
+                        try{
+
+                            $conn = new PDO('mysql:host=localhost;dbname=fatec', 'root' , '');
+                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+
+                            $stmt = $conn->query("SELECT * FROM comments WHERE post_id = $id_post");
+                            $numRows = $stmt->rowCount();
+                            $stmt = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                            if($numRows > 0){
+                                
+                                $stmt = $conn->query("SELECT * FROM comments WHERE post_id = $id_post");
+
+
+                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+
+                                    $userComment = $row['user_id'];
+                                    $userAdmin = $row['is_admin'];
+
+                                    if($userAdmin == 1){
+    
+                                        $usuario = $conn->query("SELECT * FROM administrador WHERE admin_id = $userComment");
+                                        $usuario = $usuario->fetch(PDO::FETCH_ASSOC);
+                                        $standart = "admin_";
+        
+                                    } else{
+                                        $usuario = $conn->query("SELECT * FROM user WHERE user_id = $userComment"); 
+                                        $usuario = $usuario->fetch(PDO::FETCH_ASSOC);
+                                        $standart = "user_";
+                                    }
+
+                                    $date = new DateTime($row['comment_date_time']);
+
+                                    $nome = explode(' ', $usuario[$standart . 'nome']);
+
+                                    echo "<div class='margin-top'>";
+                                    echo "<p class='border-bottom'>";
+    
+                                        echo "<strong>" . $nome[0] . "</strong>";
+
+                                        echo "<small class='margin-left'>";
+                                            echo $date->format('d/m/Y');
+                                        echo "</small>";
+
+                                        echo "<br>";
+                                        echo $row['comment_content'];
+    
+                                    echo "</p>";
+                                    echo "</div>";
+    
+                                }
+
+                            } else{
+                                echo "<h2> Seja o primeiro a comentar no post!</h2>";
+                            }
+                            
+
+
+
+                        } catch(PDOException $e){
+                            echo "Error" . $e->getMessage();
+                        }
+
+                    
+                    ?>
         </article>
     </section>
 

@@ -34,8 +34,10 @@
         $stmt = $conn->query("SELECT * FROM $tabela WHERE $coluna = $id_usuario");
         $dados_escritor = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $dados_escritor[$default . 'pic'] = explode("/", $dados_escritor[$default . 'pic']);
-        $dados_escritor[$default . 'pic'] = $dados_escritor[$default . 'pic'][5];
+        if($dados_escritor[$default . 'pic'] != ''){
+            $dados_escritor[$default . 'pic'] = explode("/", $dados_escritor[$default . 'pic']);
+            $dados_escritor[$default . 'pic'] = $dados_escritor[$default . 'pic'][5];
+        }
         
         $date = new DateTime($dados_post['post_date']);
 
