@@ -385,9 +385,9 @@
                                     echo "<div class='margin-top'>";
                                     echo "<p class='border-bottom'>";
     
-                                        echo "<strong>" . $nome[0] . "</strong>";
+                                        echo "<strong class='size-21'>" . $nome[0] . "</strong>";
 
-                                        echo "<small class='margin-left'>";
+                                        echo "<small class='float-right'>";
                                             echo $date->format('d/m/Y');
                                         echo "</small>";
 
