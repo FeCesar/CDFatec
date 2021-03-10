@@ -9,7 +9,7 @@
         $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
         $email = $_POST['email'];
-        $pass = $_POST['pass'];
+        $pass = md5($_POST['pass']);
         
         $url = $_POST['url'];
         $url = explode("/", $url);

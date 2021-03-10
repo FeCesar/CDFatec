@@ -115,6 +115,24 @@
 
         $stmt = $conn->prepare($sql);
         $result = $stmt->execute();
+        $pass = md5("admin");
+
+        $sql = $conn->prepare("INSERT INTO administrador(admin_nome, admin_email, admin_pass, is_admin) VALUES(:nome, :email, :pass, :admin)");
+        $sql->execute(array(
+            'nome' => "admin",
+            'email' => "admin@admin.com",
+            'pass' => $pass,
+            'admin' => 1
+        ));
+
+        $pass = md5("user");
+        $sql = $conn->prepare("INSERT INTO user(user_nome, user_email, user_pass, is_admin) VALUES(:nome, :email, :pass, :admin)");
+        $sql->execute(array(
+            'nome' => "user",
+            'email' => "user@user.com",
+            'pass' => $pass,
+            'admin' => 0
+        ));
 
         if(!$result){
             var_dump($stmt->errorInfo());

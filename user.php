@@ -255,8 +255,8 @@
             </div>
 
             <div class="field">
-                <label for="pass" class="size-22 lighter">Senha</label>
-                <input type="text" id="pass" class="input is-normal" name="pass" value="<?php echo $dados['user_pass']; ?>">
+                <label for="pass" class="size-22 lighter">Trocar Senha</label>
+                <input type="text" id="pass" class="input is-normal" name="pass" placeholder="Senha">
             </div>
 
             <div class="field">

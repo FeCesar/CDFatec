@@ -12,30 +12,39 @@
         $id_post = $_GET['id_post'];
 
         $stmt = $conn->query("SELECT * FROM post WHERE post_id = $id_post");
-        $dados_post = $stmt->fetch(PDO::FETCH_ASSOC);
+        $existePost = $stmt->rowCount();
 
-        if($dados_post['admin_id'] != NULL){
-            $tabela = "administrador";
-            $coluna = "admin_id";
-            $default = "admin_";
+        if($existePost > 0){
+            $dados_post = $stmt->fetch(PDO::FETCH_ASSOC);
 
+
+            if($dados_post['admin_id'] != NULL){
+                $tabela = "administrador";
+                $coluna = "admin_id";
+                $default = "admin_";
+    
+            } else{
+                $tabela = "user";
+                $coluna = "user_id";
+                $default = "user_";
+            }
+    
+            $id_usuario = $dados_post[$coluna];
+    
+            $stmt = $conn->query("SELECT * FROM $tabela WHERE $coluna = $id_usuario");
+            $dados_escritor = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+            if($dados_escritor[$default . 'pic'] != ''){
+                $dados_escritor[$default . 'pic'] = explode("/", $dados_escritor[$default . 'pic']);
+                $dados_escritor[$default . 'pic'] = $dados_escritor[$default . 'pic'][5];
+            }
+            
+            $date = new DateTime($dados_post['post_date']);
         } else{
-            $tabela = "user";
-            $coluna = "user_id";
-            $default = "user_";
+            header('Location: blog.php');
         }
 
-        $id_usuario = $dados_post[$coluna];
-
-        $stmt = $conn->query("SELECT * FROM $tabela WHERE $coluna = $id_usuario");
-        $dados_escritor = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if($dados_escritor[$default . 'pic'] != ''){
-            $dados_escritor[$default . 'pic'] = explode("/", $dados_escritor[$default . 'pic']);
-            $dados_escritor[$default . 'pic'] = $dados_escritor[$default . 'pic'][5];
-        }
         
-        $date = new DateTime($dados_post['post_date']);
 
     } catch(PDOException $e){
         echo "Error" . $e->getMessage();
@@ -269,7 +278,7 @@
 
         <div class="autor">
             <div class="columns">
-                <div class="column is-half" id="comment">
+                <div class="column is-half">
                     <div class="circle photo" style="background: url('https://docs.google.com/uc?id=<?php echo $dados_escritor[$default . 'pic']; ?>'); background-size: 100%;"></div>    
                 </div>
                 <div class="column margin-top">
@@ -289,7 +298,7 @@
 </main>
 
 
-    <section class="container make-comments">
+    <section class="container make-comments" id="comment">
 
     <h3 class="upper bold size-22">Comentários</h3>
 
@@ -298,7 +307,7 @@
                 <div class="field">
                     <form action="controller/sendComment.php" method="post">
                         <p class="control">
-                            <textarea class="textarea" name="comentario" placeholder="Adicionar Comentário..."></textarea>
+                            <textarea class="textarea" required name="comentario" placeholder="Adicionar Comentário..."></textarea>
                         </p>
                         <input type="hidden" name="post_id" value="<?php echo $id_post; ?>">
                 </div>

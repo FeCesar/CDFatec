@@ -54,6 +54,7 @@
                 header("Location: ../" . $url);
             } 
             else{
+                $pass = md5($pass);
                 $stmt = $conn->prepare("INSERT INTO user(user_nome, user_email, user_pass, is_admin) VALUES (:user_nome, :user_email, :user_pass, :admin)");
                 $stmt->execute(array(
                     'user_nome' => $nome,

@@ -254,8 +254,8 @@
             </div>
 
             <div class="field">
-                <label for="pass" class="size-22 lighter">Senha</label>
-                <input type="text" id="pass" class="input is-normal" name="pass" value="<?php echo $dados['admin_pass']; ?>">
+                <label for="pass" class="size-22 lighter">Troca Senha</label>
+                <input type="text" id="pass" class="input is-normal" name="pass" placeholder="Senha">
             </div>
 
             <div class="field">
@@ -330,30 +330,35 @@
                 $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
                 $stmt = $conn->query("SELECT * FROM post WHERE post_postado = 0 ORDER BY post_date DESC");
+                $numeroPosts = $stmt->rowCount();
 
-                while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                if($numeroPosts > 0){
+                    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 
-                    $date = new DateTime($row['post_date']);
-
-                    
-                        echo "<tr>";
-
-                            echo "<td>" . $row['post_title'] . "</td>";
-
-                            echo "<td>" . $row['post_subtitle'] . "</td>";
-
-                            echo "<td>";
-                            echo $date->format('d/m/Y');
-                            echo "</td>";
-
-                            echo "<td>";
-                            echo "<a href='analisarPost.php?id=" . $row['post_id'] . "'><button>Analisar</button></a>";
-                            echo "</td>";
-
-                        echo "<tr>";
-
-
+                        $date = new DateTime($row['post_date']);
+    
+                        
+                            echo "<tr>";
+    
+                                echo "<td>" . $row['post_title'] . "</td>";
+    
+                                echo "<td>" . $row['post_subtitle'] . "</td>";
+    
+                                echo "<td>";
+                                echo $date->format('d/m/Y');
+                                echo "</td>";
+    
+                                echo "<td>";
+                                echo "<a href='analisarPost.php?id=" . $row['post_id'] . "'><button>Analisar</button></a>";
+                                echo "</td>";
+    
+                            echo "<tr>";
+                    }
+                } else{
+                    echo "<h2 class='size-20'>Sem posts novos!</h2>";
                 }
+
+
 
             } catch(PDOException $e){
                 echo "Error" . $e->getMessage();

@@ -10,7 +10,7 @@
 
         $nome = $_POST['nome'];
         $email = $_POST['email'];
-        $pass = $_POST['pass'];
+        $pass = md5($_POST['pass']);
         $github = $_POST['github'];
         $linkedin = $_POST['linkedin'];
         $instagram = $_POST['instagram'];
